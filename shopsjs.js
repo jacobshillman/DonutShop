@@ -39,7 +39,7 @@ function fieldsets (donutshop) {
     document.write("<legend><h4>"+this.donutShops[index][0]+"</h4></legend>");
     document.write("<label>Minimum Customers: </label><input type='text' class='minCust' id='"+this.donutShops[index][0]+"minCust' value='"+this.donutShops[index][1]+"''>");
     document.write("<label>Maximum Customers: </label><input type='text' class='maxCust' id='"+this.donutShops[index][0]+"maxCust' value='"+this.donutShops[index][2]+"'><br>");
-    document.write("<label>Average Purchase: </label><input type='text'  class='avgPurchase' id='"+this.donutShops[index][0]+"avgPurchase' value='"+this.donutShops[index][3]+"'>");
+    document.write("<label>Average Purchase: </label><input type='text' class='avgPurchase' id='"+this.donutShops[index][0]+"avgPurchase' value='"+this.donutShops[index][3]+"'>");
     document.write("<label>Hours Open: </label><input type='text' class='hours' id='"+this.donutShops[index][0]+"hours' value='"+this.donutShops[index][4]+"'>");
     document.write("</fieldset>");
   }

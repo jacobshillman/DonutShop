@@ -1,5 +1,9 @@
 /*Index.html formats*/
 
+body {
+  background-color: #f11175;
+}
+
   /*Heading Group:*/
 hgroup {
   z-index: 1;
@@ -7,46 +11,46 @@ hgroup {
   margin: 3em 2em 5em 2em;
   opacity: 1;
   z-index: 2;
-  color: #1111ff; }
+  color: black;
+  background-color: none; }
     h1 {
       font-weight: bold;
       font-family: monospace;
       font-size: 3em;   }
     #subHeading {
       text-align: center;
-      font-size: 1.5em;
-    }
-
-.emphasis {
-  font-style: italic;
-  font-weight: bold;
-  color: #990022;
-}
-
-  /*Heading Group background image:*/
-#background {
-  position: relative;
-  overflow: hidden; }
-    #background:after {
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        opacity: 0.5;
-        background-image: url('Images/1024px-Sufganiot-hgroup.jpg');
-    }
+      font-size: 1.5em; }
+    /*Heading Group background image:*/
+  #background {
+    position: relative;
+    overflow: hidden;
+    background-color: none; }
+      #background:after {
+          content: ' ';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          opacity: 0.5;
+          background-image: url('Images/1024px-Sufganiot-hgroup.jpg');
+      }
 
   /*Right side image:*/
 aside {
-  position: static;}
+  position: static;
+  display: inline-block;
+  float: right;
+  width: 20%;
+  height: auto;
+  margin-top: 3em; }
     #donutGlossary {
+      width: 90%;
+      height: auto;
       float: right;
-      width: 20%;
-      height: auto; }
+      display: inherit; }
         #donutGlossary:hover {
           position: absolute;
           float: right;
@@ -56,21 +60,46 @@ aside {
           z-index: 5;
         }
 
+.emphasis {
+  font-style: italic;
+  font-weight: bold;
+  color: #990022;
+}
+
+#navbar {
+  margin-top: 3em;
+  position: fixed;
+  width: 15%;
+  display: inline-block;
+  float: left; }
+    .link {
+      display: inline-block;
+      width: 120px; }
+    ul {
+      list-style-type: none;
+      list-style: none;
+      padding: 0; }
+    li {
+      margin: .5em .5em;
+    }
+
+#shopsData {
+  display: inline-block;
+  margin: 1em 0em 1em 8em;
+  width: 60%;
+  float: both;
+}
+
 fieldset {
-  margin: 2em 2em;
-  width: 70%;
+  margin: 2em 1em;
+  min-width: 465px;
+  background-color: #cc99ff;
 }
 
 h4 {
   text-decoration: underline;
   font-style: italic;
   font-size: 1.5em;
-}
-
-#shopsData {
-  width: 75%;
-  text-align: center;
-  margin: 1em 1em;
 }
 
 .minCust {
