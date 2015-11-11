@@ -1,0 +1,98 @@
+/*Index.html formats*/
+
+  /*Heading Group:*/
+hgroup {
+  z-index: 1;
+  position: relative;
+  margin: 3em 2em 5em 2em;
+  opacity: 1;
+  z-index: 2;
+  color: #1111ff; }
+    h1 {
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 3em;   }
+    #subHeading {
+      text-align: center;
+      font-size: 1.5em;
+    }
+
+.emphasis {
+  font-style: italic;
+  font-weight: bold;
+  color: #990022;
+}
+
+  /*Heading Group background image:*/
+#background {
+  position: relative;
+  overflow: hidden; }
+    #background:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.5;
+        background-image: url('Images/1024px-Sufganiot-hgroup.jpg');
+    }
+
+  /*Right side image:*/
+aside {
+  position: static;}
+    #donutGlossary {
+      float: right;
+      width: 20%;
+      height: auto; }
+        #donutGlossary:hover {
+          position: absolute;
+          float: right;
+          width: 50%;
+          height: auto;
+          right: 0;
+          z-index: 5;
+        }
+
+fieldset {
+  margin: 2em 2em;
+  width: 70%;
+}
+
+h4 {
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 1.5em;
+}
+
+#shopsData {
+  width: 75%;
+  text-align: center;
+  margin: 1em 1em;
+}
+
+.minCust {
+  width: 4em;
+  text-align: center;
+  margin: 1em 1em;
+}
+
+.maxCust {
+  width: 4em;
+  text-align: center;
+  margin: 1em 1em;
+}
+
+.avgPurchase {
+  width: 4em;
+  text-align: center;
+  margin: 1em 1em 1em 2.5em;
+}
+
+.hours {
+  width: 4em;
+  text-align: center;
+  margin: 1em 1em 1em 5.6em;
+}
