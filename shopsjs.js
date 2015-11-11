@@ -32,21 +32,14 @@ donutShops[4] = new Array(5);
     donutShops[4][3] = 3.75;//avgPurchase
     donutShops[4][4] = 24;  //hours
 
-var formElement = document.getElementById("shopsData");
-
 function getRandom (min, max) {
     return Math.floor(Math.random() * (max - min +1)+min);
   };
 
-var dailyCustomers = 0;
+function getCustomers (min, max, hours) {
 
-/*
-function avgCustomers (min, max, hours) {
-    for (index = 0; index < donutShops.length; index++)
-    dailyCustomers = getRandom(+this.donutShops[index][1], this.donutShops[index][2])
-        *this.donutShops[index][4]+
 }
-*/
+
 function fieldsets (donutshop) {
   for (var index = 0; index < donutShops.length; index++){
     document.write("<fieldset id='"+this.donutShops[index][0]+"'>");
@@ -65,12 +58,12 @@ function fieldsets (donutshop) {
       "value='"+this.donutShops[index][4]+"'>");
     document.write("<div class='custPerDay'>Average Daily Customers: <span "+
      "id='"+this.donutShops[index][0]+" cust'>"
-     +getRandom(+this.donutShops[index][1], this.donutShops[index][2]
-     *this.donutShops[index][4])+"</span></div>");
+     +getRandom(+this.donutShops[index][1], this.donutShops[index][2])
+     *this.donutShops[index][4]+"</span></div>");
     document.write("<div class='donutsPerDay'>Average Donuts Baked Daily: <span "+
      "id='"+this.donutShops[index][0]+" bake'>"
-     +Math.ceil(getRandom(+this.donutShops[index][1], this.donutShops[index][2]
-     *this.donutShops[index][4])*this.donutShops[index][3])+
+     +getRandom(+this.donutShops[index][1], this.donutShops[index][2])
+     *this.donutShops[index][4]*Math.ceil(this.donutShops[index][3])+
      "</span></div>");
     document.write("</fieldset>");
   }
