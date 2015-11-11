@@ -63,7 +63,7 @@ aside {
 .emphasis {
   font-style: italic;
   font-weight: bold;
-  color: #990022;
+  color: #333322;
 }
 
 #navbar {
@@ -124,4 +124,12 @@ h4 {
   width: 4em;
   text-align: center;
   margin: 1em 1em 1em 5.6em;
+}
+
+.custPerDay {
+  margin: 1em 1em 1em 0em;
+}
+
+.donutsPerDay {
+  margin: 1em 1em 1em 0em;
 }
