@@ -6,7 +6,6 @@ body {
 
   /*Heading Group:*/
 hgroup {
-  z-index: 1;
   position: relative;
   margin: 3em 2em 5em 2em;
   opacity: 1;
@@ -16,10 +15,12 @@ hgroup {
     h1 {
       font-weight: bold;
       font-family: monospace;
-      font-size: 3em;   }
+      font-size: 3em;
+      text-shadow: 2px 2px white; }
     #subHeading {
       text-align: center;
-      font-size: 1.5em; }
+      font-size: 1.5em;
+      text-shadow: 1px 1px blue; }
     /*Heading Group background image:*/
   #background {
     position: relative;
@@ -63,7 +64,7 @@ aside {
 .emphasis {
   font-style: italic;
   font-weight: bold;
-  color: #333322;
+  color: white;
 }
 
 #navbar {
