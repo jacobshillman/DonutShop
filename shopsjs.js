@@ -95,16 +95,7 @@ function fieldsets (donutshop) {
      "id='"+this.donutShop[index].shopName+" bake'>"
      +this.donutShop[index].bakeDaily+
      "</span></div>");
-/*
-    document.write("<div class='avgCust'>Hourly Customers: <span "+
-     "id='"+this.donutShop[index].shopName+" cust'>"
-     +this.donutShop[index].avgCust+"</span></div>");
 
-    document.write("<div class='bakeHourly'>Donuts per Hour: <span "+
-     "id='"+this.donutShop[index].shopName+" bake'>"
-     +this.donutShop[index].bakeHourly+
-     "</span></div>");
-*/
     document.write("</fieldset>");
   }
 };
