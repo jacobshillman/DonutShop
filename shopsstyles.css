@@ -140,3 +140,18 @@ h4 {
 .donutsPerDay {
   margin: 1em 1em 1em 0em;
 }
+
+.hourlyStats, th, td {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+.hourlyStats th {
+  width: 83px;
+  height: auto;
+}
+
+.hourlyStats td {
+  text-align: center;
+  width: 35px;
+}

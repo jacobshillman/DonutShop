@@ -3,6 +3,14 @@ function getRandom (min, max) {
     return Math.floor(Math.random() * (max - min +1)+min);
   };
 
+function hoursOpen (hours) {
+  var hourIndex = new Array();
+  for (var index = 0; index < hours; index++) {
+    hourIndex[index] = hourIndex.push(index);
+  }
+return hourIndex;
+};
+
 function hourlyCust (hours, min, max) {
   var hourlyCustomers = new Array (hours);
   for (var index = 0; index < hours; index++) {
@@ -36,26 +44,33 @@ function dailyBake (bake) {
 };
 
 //Shop constructor:
-function Shop (name,minCust,maxCust,avgPurchase,hours,custDaily) {
+function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgPurchase = avgPurchase;
   this.hours = hours;
 
-    //Random sample of average customers per hour:
-  this.avgCust = hourlyCust(this.hours, this.minCust, this.maxCust);
-    console.log(this.shopName + ", Customers per hour: " + this.avgCust);
+  this.indexHours = hoursOpen(this.hours);
+    console.log(this.shopName+", Hours Open: " +this.indexHours);
 
-  this.custDaily = dailyCust (this.avgCust);
+    //Random sample of average customers per hour:
+  this.custHourly = hourlyCust(this.hours, this.minCust, this.maxCust);
+    console.log(this.shopName + ", Customers per hour: " + this.custHourly);
+
+  this.custDaily = dailyCust(this.custHourly);
+    console.log(this.shopName + ", daily customers: " + this.custDaily);
 
     //Donuts to bake per hour:
-  this.bakeHourly = hourlyBake (this.avgCust, this.avgPurchase);
+  this.bakeHourly = hourlyBake(this.custHourly, this.avgPurchase);
     console.log(this.shopName + ", Donuts to bake per hour: " + this.bakeHourly);
 
     //Donuts to bake per day:
-  this.bakeDaily = dailyBake (this.bakeHourly);
+  this.bakeDaily = dailyBake(this.bakeHourly);
     console.log(this.shopName + ", Donuts to bake per day: " + this.bakeDaily);
+
+  this.displayHours = hoursDisplay();
+
 };
 
 var donutShop = [5];
@@ -66,6 +81,7 @@ donutShop[3] = new Shop("Tonallis Donuts & Cream", 2, 28, 1.25, 17);
 donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
 function fieldsets (donutshop) {
+
   for (var index = 0; index < donutShop.length; index++){
     document.write("<fieldset id='"+this.donutShop[index].shopName+"'>");
 
@@ -96,6 +112,28 @@ function fieldsets (donutshop) {
      +this.donutShop[index].bakeDaily+
      "</span></div>");
 
+    document.write("<table class='hourlyStats'>"+hoursDisplay(this.donutShop[index]));
+  }
+function hoursDisplay () {
+  var test = "<tr><th>Hours Open Index:</th>";
+    for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours; hrIndex++) {
+      test +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
+    }
+  test += "</tr></table>";
+};
+
+};
+
+
+/*
+      <td>"
+      +this.donutShop[index].indexHours+"</td></tr>"+
+      "<tr><th>Customers by Hour:</th><td>"+this.donutShop[index].custHourly+
+      "</td></tr>"+
+      "<tr><th>Donuts by Hour:</th><td>"+this.donutShop[index].bakeHourly+
+      "</td></tr></table>");
+
     document.write("</fieldset>");
   }
 };
+*/
