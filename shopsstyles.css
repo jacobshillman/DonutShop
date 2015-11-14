@@ -1,6 +1,6 @@
 /*Index.html formats*/
 
-body {
+#content {
   background-color: #f11175;
 }
 
@@ -35,7 +35,7 @@ hgroup {
           width: 100%;
           height: 100%;
           z-index: 1;
-          opacity: 0.5;
+          opacity: 0.8;
           background-image: url('Images/1024px-Sufganiot-hgroup.jpg');
       }
 
@@ -64,7 +64,7 @@ aside {
 .emphasis {
   font-style: italic;
   font-weight: bold;
-  color: white;
+  color: red;
 }
 
 #navbar {
