@@ -36,7 +36,7 @@ function dailyBake (bake) {
 };
 
 //Shop constructor:
-function Shop (name,minCust,maxCust,avgPurchase,hours,custDaily,avgCust,bakeHourly,bakeDaily) {
+function Shop (name,minCust,maxCust,avgPurchase,hours,custDaily) {
   this.shopName = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
