@@ -73,11 +73,12 @@ aside {
   width: 135px;
   display: inline-block;
   float: left;
-  border: 2px solid blue; }
+  border: 2px solid blue;
+  padding-top: 5px; }
     #navLabel {
       border-bottom: 2px solid black;
       font-weight: bold;
-      padding: 2px 2px; }
+      margin: 2px 2px; }
     .link {
       display: inline-block;
       width: 120px; }
