@@ -4,6 +4,12 @@
   background-color: #f11175;
 }
 
+.emphasis {
+  font-style: italic;
+  font-weight: bold;
+  color: red;
+}
+
   /*Heading Group:*/
 hgroup {
   position: relative;
@@ -19,8 +25,8 @@ hgroup {
       text-shadow: 2px 2px white; }
     #subHeading {
       text-align: center;
-      font-size: 1.5em;
-      text-shadow: 1px 1px blue; }
+      font-size: 1.75em;
+      text-shadow: 1px 1px beige; }
     /*Heading Group background image:*/
   #background {
     position: relative;
@@ -61,12 +67,7 @@ aside {
           z-index: 5;
         }
 
-.emphasis {
-  font-style: italic;
-  font-weight: bold;
-  color: red;
-}
-
+  /*Navigation bar formatting:  */
 #navbar {
   margin-top: 2em;
   position: fixed;
@@ -90,6 +91,7 @@ aside {
       margin: .5em .5em;
     }
 
+  /*Form container for dynamicly generated Shops fieldsets: */
 #shopsData {
   display: inline-block;
   margin: 1em 0em 1em 8em;
@@ -97,16 +99,19 @@ aside {
   float: both;
 }
 
+  /*Dynamically generated fieldsets:  */
 fieldset {
   margin: 2em 1em;
   min-width: 465px;
   background-color: #cc99ff;
+  position: static;
 }
 
 h4 {
   text-decoration: underline;
   font-style: italic;
   font-size: 1.5em;
+  padding-bottom: 21px;
 }
 
 .minCust {
@@ -141,6 +146,11 @@ h4 {
   margin: 1em 1em 1em 0em;
 }
 
+  /*Vanishing table with Shops stats formatting:  */
+.hourlyStats {
+  display: none;
+}
+
 .hourlyStats, th, td {
   border-collapse: collapse;
   border: 2px solid black;
@@ -154,4 +164,30 @@ h4 {
 .hourlyStats td {
   text-align: center;
   width: 35px;
+}
+
+  /*Vanishing table formatting: */
+.hoverTable {
+  float: right;
+}
+.hoverTable:hover .hourlyStats {
+  display: block;
+  position: absolute;
+  right: 0;
+  background-color: white;
+}
+
+  /*Footer formatting:  */
+footer {
+  background-color: red;
+  padding: 3em 1em;
+}
+
+.legalese {
+  text-align: right;
+  padding: 5px 5px;
+}
+
+#copy {
+  padding: 10px 10px;
 }

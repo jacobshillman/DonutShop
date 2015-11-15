@@ -1,4 +1,17 @@
+  //Insert date:
+    function date () {
+    var dt = new Date();
+    return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    };
+
+    window.onload = function () {
+    var theDiv = document.getElementById("copy");
+    var content = document.createTextNode(date());
+    theDiv.appendChild(content);
+    };
+
 //Global functions:
+
 function getRandom (min, max) {
     return Math.floor(Math.random() * (max - min +1)+min);
   };
@@ -43,17 +56,6 @@ function dailyBake (bake) {
   return bakedDaily;
 };
 
-var hourlyItems = ["Each Hour Open", "Customers per Hour", "Sales per Hour"];
-  console.log(hourlyItems);
-
-function hoursDisplay (store, parameter) {
-  var test = "<tr><th>Hours Open Index:</th>";
-    for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours; hrIndex++) {
-      test +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
-    }
-  test += "</tr></table>";
-};
-
 //Shop constructor:
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
@@ -62,28 +64,22 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.avgPurchase = avgPurchase;
   this.hours = hours;
 
+    //Generate array with each hour Shop is open:
   this.indexHours = hoursOpen(this.hours);
-    console.log(this.shopName+", Hours Open: " +this.indexHours);
 
     //Random sample of average customers per hour:
   this.custHourly = hourlyCust(this.hours, this.minCust, this.maxCust);
-    console.log(this.shopName + ", Customers per hour: " + this.custHourly);
 
   this.custDaily = dailyCust(this.custHourly);
-    console.log(this.shopName + ", daily customers: " + this.custDaily);
 
     //Donuts to bake per hour:
   this.bakeHourly = hourlyBake(this.custHourly, this.avgPurchase);
-    console.log(this.shopName + ", Donuts to bake per hour: " + this.bakeHourly);
 
     //Donuts to bake per day:
   this.bakeDaily = dailyBake(this.bakeHourly);
-    console.log(this.shopName + ", Donuts to bake per day: " + this.bakeDaily);
-
-//  this.displayHours = hoursDisplay();
-
 };
 
+//Init Shop instances:
 var donutShop = [5];
 donutShop[0] = new Shop("Blue Star Donuts", 8, 43, 4.5, 11);
 donutShop[1] = new Shop("Voodoo Doughnut", 4, 37, 2, 24);
@@ -91,8 +87,8 @@ donutShop[2] = new Shop("Coco", 9, 23, 6.33, 11);
 donutShop[3] = new Shop("Tonallis Donuts & Cream", 2, 28, 1.25, 17);
 donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
+//Write Shop content to page:
 function fieldsets (donutshop) {
-
   for (var index = 0; index < donutShop.length; index++){
     document.write("<fieldset id='"+this.donutShop[index].shopName+"'>");
 
@@ -118,26 +114,44 @@ function fieldsets (donutshop) {
      "id='"+this.donutShop[index].shopName+" cust'>"
      +this.donutShop[index].custDaily+"</span></div>");
 
-    document.write("<div class='donutsPerDay'>Average Donuts Baked Daily: <span "+
+    document.write("<span class='donutsPerDay'>Average Donuts Baked Daily: <span "+
      "id='"+this.donutShop[index].shopName+" bake'>"
      +this.donutShop[index].bakeDaily+
-     "</span></div>");
-  }
-};
+     "</span></span>");
 
-/*    document.write("<table class='hourlyStats'>"+hoursDisplay(this.donutShop[index]));
-*/
+    document.write("<span class='hoverTable'><button id='shop"+
+      this.donutShop[index].shopName+"' type='button'>Hourly Statistics</button>");
 
+    document.write("<table class='hourlyStats'>"
+      +hoursDisplay(this.donutShop[index])
+      +custDisplay(this.donutShop[index])
+      +salesDisplay(this.donutShop[index])
+      +"</table>");
 
-/*
-      <td>"
-      +this.donutShop[index].indexHours+"</td></tr>"+
-      "<tr><th>Customers by Hour:</th><td>"+this.donutShop[index].custHourly+
-      "</td></tr>"+
-      "<tr><th>Donuts by Hour:</th><td>"+this.donutShop[index].bakeHourly+
-      "</td></tr></table>");
+          //Functions to generate hourly Shop info for table:
+        function hoursDisplay () {
+          var hrDisp = "<tr><th>Each Hour Open:</th>";
+            for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours.length; hrIndex++) {
+              hrDisp +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
+            }
+          hrDisp += "</tr>"
+          return hrDisp;  }
+        function custDisplay () {
+          var cDisp = "<tr><th>Customers per Hour:</th>";
+            for (custIndex = 0; custIndex < this.donutShop[index].custHourly.length; custIndex++) {
+              cDisp +="<td>"+this.donutShop[index].custHourly[custIndex]+"</td>";
+            }
+          cDisp += "</tr>"
+          return cDisp; }
+        function salesDisplay () {
+          var sDist = "<tr><th>Sales per Hour:</th>";
+            for (saleIndex = 0; saleIndex < this.donutShop[index].bakeHourly.length; saleIndex++) {
+              sDist +="<td>"+this.donutShop[index].bakeHourly[saleIndex]+"</td>";
+            }
+          sDist += "</tr>"
+          return sDist; }
 
     document.write("</fieldset>");
-  }
+
+}
 };
-*/
