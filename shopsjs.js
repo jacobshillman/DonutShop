@@ -43,6 +43,17 @@ function dailyBake (bake) {
   return bakedDaily;
 };
 
+var hourlyItems = ["Each Hour Open", "Customers per Hour", "Sales per Hour"];
+  console.log(hourlyItems);
+
+function hoursDisplay (store, parameter) {
+  var test = "<tr><th>Hours Open Index:</th>";
+    for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours; hrIndex++) {
+      test +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
+    }
+  test += "</tr></table>";
+};
+
 //Shop constructor:
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
@@ -69,7 +80,7 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.bakeDaily = dailyBake(this.bakeHourly);
     console.log(this.shopName + ", Donuts to bake per day: " + this.bakeDaily);
 
-  this.displayHours = hoursDisplay();
+//  this.displayHours = hoursDisplay();
 
 };
 
@@ -111,18 +122,11 @@ function fieldsets (donutshop) {
      "id='"+this.donutShop[index].shopName+" bake'>"
      +this.donutShop[index].bakeDaily+
      "</span></div>");
-
-    document.write("<table class='hourlyStats'>"+hoursDisplay(this.donutShop[index]));
   }
-function hoursDisplay () {
-  var test = "<tr><th>Hours Open Index:</th>";
-    for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours; hrIndex++) {
-      test +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
-    }
-  test += "</tr></table>";
 };
 
-};
+/*    document.write("<table class='hourlyStats'>"+hoursDisplay(this.donutShop[index]));
+*/
 
 
 /*
