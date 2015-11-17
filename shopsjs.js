@@ -124,7 +124,8 @@ function fieldsets (donutshop) {
      "</span></span>");
 
     document.write("<span class='hoverTable'><button id='shop"+
-      this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"' type='button'>Hourly Statistics</button>");
+      this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+      +"' type='button'>Hourly Statistics</button>");
 
     document.write("<table class='hourlyStats'>"
       +hoursDisplay(this.donutShop[index])
