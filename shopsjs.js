@@ -1,4 +1,4 @@
-  //Insert date:
+    //Insert date:
     function date () {
     var dt = new Date();
     return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
@@ -10,8 +10,7 @@
     theDiv.appendChild(content);
     };
 
-//Global functions:
-
+  //Global functions:
 function getRandom (min, max) {
     return Math.floor(Math.random() * (max - min +1)+min);
   };
@@ -56,7 +55,7 @@ function dailyBake (bake) {
   return bakedDaily;
 };
 
-//Shop constructor:
+  //Shop constructor:
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
   this.minCust = minCust;
@@ -79,7 +78,7 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.bakeDaily = dailyBake(this.bakeHourly);
 };
 
-//Init Shop instances:
+  //Init Shop instances:
 var donutShop = [5];
 donutShop[0] = new Shop("Blue Star Donuts", 8, 43, 4.5, 11);
 donutShop[1] = new Shop("Voodoo Doughnut", 4, 37, 2, 24);
@@ -87,11 +86,31 @@ donutShop[2] = new Shop("Coco", 9, 23, 6.33, 11);
 donutShop[3] = new Shop("Tonallis Donuts & Cream", 2, 28, 1.25, 17);
 donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
-//Write Shop content to page:
+  //Write Shop content to page:
 function fieldsets (donutshop) {
   for (var index = 0; index < donutShop.length; index++){
 
-/* **********use .replace() to remove spaces in ID text strings******* */
+      //Checkboxes for each Shop:
+    var form = document.getElementById("shopsData");
+    var box = document.createElement("div");
+      box.className="box";
+    shopsData.appendChild(box);
+    var check = document.createElement("input");
+      check.type="checkbox";
+      check.name=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
+      check.value=this.donutShop[index].shopName;
+      check.form="shopsData";
+      check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"select";
+    var label = document.createElement("label");
+      label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"select"
+      label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
+      label.appendChild(document.createTextNode(this.donutShop[index].shopName));
+    box.appendChild(check);
+    box.appendChild(label);
+  };
+
+    //Populate shops data: 
+  for (var index = 0; index < donutShop.length; index++){
 
     document.write("<fieldset id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
       +"'>");

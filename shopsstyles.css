@@ -2,7 +2,7 @@
 
 #content {
   background-color: #f11175;
-  height: 300px;
+  min-height: 300px;
 }
 
 .emphasis {
@@ -100,7 +100,22 @@ aside {
   float: both;
 }
 
-  /*Dynamically generated fieldsets:  */
+#selection {
+  margin: 1em 0em 1em 1em;
+
+}
+
+  /*Dynamically generated Shops Data:  */
+.box {
+  margin-left: 1em;
+  padding: 5px;
+}
+
+#BlueStarDonutsLabel, #VoodooDoughnutLabel, #CocoLabel, #TonallisDonutsCreamLabel, #SesameDonutsLabel {
+
+}
+
+
 fieldset {
   margin: 2em 1em;
   min-width: 465px;
@@ -172,7 +187,7 @@ h4 {
 
 
 #BlueStarDonuts, #VoodooDoughnut, #Coco, #TonallisDonutsCream, #SesameDonuts {
-  display: none;
+  display: block;
 }
 
   /*Footer formatting:  */
