@@ -130,7 +130,7 @@ function fieldsets (donutshop) {
 
           //Functions to generate hourly Shop info for table:
         function hoursDisplay () {
-          var hrDisp = "<tr><th>Each Hour Open:</th>";
+          var hrDisp = "<tr id='highlight'><th>Each Hour Open:</th>";
             for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours.length; hrIndex++) {
               hrDisp +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
             }

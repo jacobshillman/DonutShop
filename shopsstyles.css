@@ -156,6 +156,10 @@ h4 {
   border: 2px solid black;
 }
 
+#highlight {
+  background-color: orange;
+}
+
 .hourlyStats th {
   width: 83px;
   height: auto;
