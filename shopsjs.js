@@ -90,37 +90,41 @@ donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 //Write Shop content to page:
 function fieldsets (donutshop) {
   for (var index = 0; index < donutShop.length; index++){
-    document.write("<fieldset id='"+this.donutShop[index].shopName+"'>");
+
+/* **********use .replace() to remove spaces in ID text strings******* */
+
+    document.write("<fieldset id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+      +"'>");
 
     document.write("<legend><h4>"+this.donutShop[index].shopName+"</h4></legend>");
 
     document.write("<label>Minimum Customers: </label><input type='text'"+
-     "class='minCust' id='"+this.donutShop[index].shopName+" minCust'"+
-      "value='"+this.donutShop[index].minCust+"''>");
+     "class='minCust' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+     +"minCust'"+"value='"+this.donutShop[index].minCust+"''>");
 
     document.write("<label>Maximum Customers: </label><input type='text'"+
-     "class='maxCust' id='"+this.donutShop[index].shopName+" maxCust'"+
-      "value='"+this.donutShop[index].maxCust+"'><br>");
+     "class='maxCust' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+     +"maxCust'"+"value='"+this.donutShop[index].maxCust+"'><br>");
 
     document.write("<label>Average Purchase: </label><input type='text'"+
-     "class='avgPurchase' id='"+this.donutShop[index].shopName+" avgPurchase'"+
-      "value='"+this.donutShop[index].avgPurchase+"'>");
+     "class='avgPurchase' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+     +"avgPurchase'"+"value='"+this.donutShop[index].avgPurchase+"'>");
 
     document.write("<label>Hours Open: </label><input type='text'"+
-     "class='hours' id='"+this.donutShop[index].shopName+" hours'"+
-      "value='"+this.donutShop[index].hours+"'><br>");
+     "class='hours' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+     +"hours'"+"value='"+this.donutShop[index].hours+"'><br>");
 
     document.write("<div class='custDaily'>Average Daily Customers: <span "+
-     "id='"+this.donutShop[index].shopName+" cust'>"
+     "id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"cust'>"
      +this.donutShop[index].custDaily+"</span></div>");
 
     document.write("<span class='donutsPerDay'>Average Donuts Baked Daily: <span "+
-     "id='"+this.donutShop[index].shopName+" bake'>"
+     "id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"bake'>"
      +this.donutShop[index].bakeDaily+
      "</span></span>");
 
     document.write("<span class='hoverTable'><button id='shop"+
-      this.donutShop[index].shopName+"' type='button'>Hourly Statistics</button>");
+      this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"' type='button'>Hourly Statistics</button>");
 
     document.write("<table class='hourlyStats'>"
       +hoursDisplay(this.donutShop[index])

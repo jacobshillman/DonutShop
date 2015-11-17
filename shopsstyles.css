@@ -2,6 +2,7 @@
 
 #content {
   background-color: #f11175;
+  height: 300px;
 }
 
 .emphasis {
@@ -114,13 +115,7 @@ h4 {
   padding-bottom: 21px;
 }
 
-.minCust {
-  width: 4em;
-  text-align: center;
-  margin: 1em 1em;
-}
-
-.maxCust {
+.minCust, .maxCust {
   width: 4em;
   text-align: center;
   margin: 1em 1em;
@@ -138,15 +133,15 @@ h4 {
   margin: 1em 1em 1em 5.6em;
 }
 
-.custDaily {
-  margin: 1em 1em 1em 0em;
-}
-
-.donutsPerDay {
+.custDaily, .donutsPerDay {
   margin: 1em 1em 1em 0em;
 }
 
   /*Vanishing table with Shops stats formatting:  */
+#highlight {
+  background-color: orange;
+}
+
 .hourlyStats {
   display: none;
 }
@@ -156,29 +151,28 @@ h4 {
   border: 2px solid black;
 }
 
-#highlight {
-  background-color: orange;
-}
-
 .hourlyStats th {
   width: 83px;
-  height: auto;
 }
 
 .hourlyStats td {
   text-align: center;
-  width: 35px;
-}
+  width: 35px; }
 
-  /*Vanishing table formatting: */
-.hoverTable {
-  float: right;
-}
-.hoverTable:hover .hourlyStats {
-  display: block;
-  position: absolute;
-  right: 0;
-  background-color: white;
+      /*Vanishing table formatting: */
+    .hoverTable {
+      float: right;
+    }
+    .hoverTable:hover .hourlyStats {
+      display: block;
+      position: absolute;
+      right: 0;
+      background-color: white;
+    }
+
+
+#BlueStarDonuts, #VoodooDoughnut, #Coco, #TonallisDonutsCream, #SesameDonuts {
+  display: none;
 }
 
   /*Footer formatting:  */
