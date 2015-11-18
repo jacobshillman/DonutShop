@@ -92,16 +92,6 @@ function fieldsets (donutshop) {
 
     //Checkboxes for each Shop:
       //Show/Hide shop fieldset on checkbox click:
-    var fieldsetTest=false;
-      function displayShop(){
-          if(fieldsetTest){    
-            document.getElementById(this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')).style.display='block';
-            fieldsetTest=false;
-          }else{
-            document.getElementById(this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')).style.display='none'; 
-            fieldsetTest=true;    
-          }
-      };
 
     var form = document.getElementById("shopsData");
     var box = document.createElement("div");
@@ -112,15 +102,28 @@ function fieldsets (donutshop) {
       check.name=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
       check.value=this.donutShop[index].shopName;
       check.form="shopsData";
-      check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"select";
-      check.setAttribute("onclick", "displayShop()");
+      check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
+
+     check.setAttribute("onclick", displayShop());
+
     var label = document.createElement("label");
-      label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"select"
+      label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select"
       label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
       label.appendChild(document.createTextNode(this.donutShop[index].shopName));
     box.appendChild(check);
     box.appendChild(label);
   };
+
+  var fieldsetTest=false;
+function displayShop(){
+    if(fieldsetTest){    
+     document.getElementById("BlueStarDonuts").id="BlueStarDonutsChecked";
+      fieldsetTest=false;
+    }else{
+      document.getElementById("BlueStarDonutsChecked").id="BlueStarDonuts"; 
+      fieldsetTest=true;    
+    }
+};
 
     //Populate shops data: 
   for (var index = 0; index < donutShop.length; index++){
