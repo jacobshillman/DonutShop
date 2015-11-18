@@ -2,7 +2,7 @@
 
 #content {
   background-color: #f11175;
-  min-height: 300px;
+  min-height: 375px;
 }
 
 .emphasis {
@@ -187,7 +187,7 @@ h4 {
 
 
 #BlueStarDonuts, #VoodooDoughnut, #Coco, #TonallisDonutsCream, #SesameDonuts {
-  display: block;
+  display: none;
 }
 
   /*Footer formatting:  */

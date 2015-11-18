@@ -90,7 +90,19 @@ donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 function fieldsets (donutshop) {
   for (var index = 0; index < donutShop.length; index++){
 
-      //Checkboxes for each Shop:
+    //Checkboxes for each Shop:
+      //Show/Hide shop fieldset on checkbox click:
+    var fieldsetTest=false;
+      function displayShop(){
+          if(fieldsetTest){    
+            document.getElementById(this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')).style.display='block';
+            fieldsetTest=false;
+          }else{
+            document.getElementById(this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')).style.display='none'; 
+            fieldsetTest=true;    
+          }
+      };
+
     var form = document.getElementById("shopsData");
     var box = document.createElement("div");
       box.className="box";
@@ -101,6 +113,7 @@ function fieldsets (donutshop) {
       check.value=this.donutShop[index].shopName;
       check.form="shopsData";
       check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"select";
+      check.setAttribute("onclick", "displayShop()");
     var label = document.createElement("label");
       label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"select"
       label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
@@ -152,7 +165,7 @@ function fieldsets (donutshop) {
       +salesDisplay(this.donutShop[index])
       +"</table>");
 
-          //Functions to generate hourly Shop info for table:
+          //Functions to generate hourly Shop info for hidden table:
         function hoursDisplay () {
           var hrDisp = "<tr id='highlight'><th>Each Hour Open:</th>";
             for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours.length; hrIndex++) {
@@ -168,12 +181,12 @@ function fieldsets (donutshop) {
           cDisp += "</tr>"
           return cDisp; }
         function salesDisplay () {
-          var sDist = "<tr><th>Sales per Hour:</th>";
+          var sDisp = "<tr><th>Sales per Hour:</th>";
             for (saleIndex = 0; saleIndex < this.donutShop[index].bakeHourly.length; saleIndex++) {
-              sDist +="<td>"+this.donutShop[index].bakeHourly[saleIndex]+"</td>";
+              sDisp +="<td>"+this.donutShop[index].bakeHourly[saleIndex]+"</td>";
             }
-          sDist += "</tr>"
-          return sDist; }
+          sDisp += "</tr>"
+          return sDisp; }
 
     document.write("</fieldset>");
 
