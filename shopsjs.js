@@ -173,42 +173,40 @@ function fieldsets (donutshop) {
         var trow1 = document.createElement("tr");
           trow1.id = "highlight";
         var col1Head = document.createElement("th");
-//        var col1Data = hoursDisplay();
+        var col1Data.hoursDisplay();
         var trow2 = document.createElement("tr");
         var col2Head = document.createElement("th");
-//        var col2Data = custDisplay();
+        var col2Data.custDisplay();
         var trow3 = document.createElement("tr");
         var col3Head = document.createElement("th");
-        var col3Data = salesDisplay();
+        var col3Data.salesDisplay();
 
 
 
           //Functions to generate hourly Shop info for hidden table:
-/*        function hoursDisplay () {
-          for (hrIndex = 0; hrIndex <
-          this.donutShop[index].indexHours.length; hrIndex++) {
-          var hrDisp = document.createElement("td");
-            td.appendChild(document.createTextNode(this.donutShop[index].custHourly[hrIndex]));
-            hrDisp += document.createElement("td");
-              td.appendChild(document.createTextNode(this.donutShop[index].custHourly[hrIndex]));
-            }
-          return hrDisp;  }
+        function hoursDisplay () {
+          for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours.length; hrIndex++) {
+            var hrDisp = trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[hrIndex]));
+            hrDisp += trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[hrIndex]));
+          return hrDisp;
+          }
+        };
 
         function custDisplay () {
-          var cDisp = document.createElement("td");
-          for (custIndex = 0; custIndex <
-          this.donutShop[index].custHourly.length; custIndex++) {
-            cDisp += document.createElement("td");
-              td.appendChild(document.createTextNode(this.donutShop[index].custHourly[custIndex]));
-            }
-          return cDisp; }
-*/
+          for (custIndex = 0; custIndex < this.donutShop[index].indexHours.length; custIndex++) {
+            var cDisp = trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[custIndex]));
+            cDisp += trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[custIndex]));
+          return cDisp;
+          }
+        };
+
         function salesDisplay () {
-            for (saleIndex = 0; saleIndex < this.donutShop[index].bakeHourly.length; saleIndex++) {
-          var sDisp = insertCell(document.createTextNode(this.donutShop[index].custHourly[saleIndex]));
-            sDisp += insertCell(document.createTextNode(this.donutShop[index].custHourly[saleIndex]));
-            return sDisp;}
-           }
+          for (saleIndex = 0; saleIndex < this.donutShop[index].bakeHourly.length; saleIndex++) {
+            var sDisp = trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[saleIndex]));
+            sDisp += trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[saleIndex]));
+          return sDisp;
+          }
+        };
 
       //Instantiate elements created:
     form.appendChild(fieldset);
@@ -239,16 +237,16 @@ function fieldsets (donutshop) {
     fieldset.appendChild(hoverTable);
       hoverTable.appendChild(hoverTableButton);
       hoverTableButton.appendChild(document.createTextNode("Hourly Statistics"));
-    fieldset.appendChild(hourlyStats);
-      hourlyStats.appendChild(trow1);
+    fieldset.appendChild(statsHourly);
+      statsHourly.appendChild(trow1);
         trow1.appendChild(col1Head);
           col1Head.appendChild(document.createTextNode("Each Hour Open:"));
-        trow1.appendChild(col1Data());
-      hourlyStats.appendChild(trow2);
+        trow1.appendChild(col1Data);
+      statsHourly.appendChild(trow2);
         trow2.appendChild(col2Head);
           col2Head.appendChild(document.createTextNode("Customers per Hour:"));
         trow2.appendChild(col2Data);
-      hourlyStats.appendChild(trow3);
+      statsHourly.appendChild(trow3);
         trow3.appendChild(col3Head);
           col3Head.appendChild(document.createTextNode("Sales per Hour:"));
         trow3.appendChild(col3Data);
