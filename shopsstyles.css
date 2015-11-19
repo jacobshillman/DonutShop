@@ -115,8 +115,7 @@ aside {
 
 }
 
-
-fieldset {
+.donuts {
   margin: 2em 1em;
   min-width: 465px;
   background-color: #cc99ff;
@@ -184,11 +183,6 @@ h4 {
       right: 0;
       background-color: white;
     }
-
-
-#BlueStarDonuts, #VoodooDoughnut, #Coco, #TonallisDonutsCream, #SesameDonuts {
-  display: none;
-}
 
 input:checked fieldset {
   display: block;
