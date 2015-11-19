@@ -111,10 +111,6 @@ aside {
   padding: 5px;
 }
 
-#BlueStarDonutsLabel, #VoodooDoughnutLabel, #CocoLabel, #TonallisDonutsCreamLabel, #SesameDonutsLabel {
-
-}
-
 .donuts {
   margin: 2em 1em;
   min-width: 465px;
@@ -157,7 +153,7 @@ h4 {
 }
 
 .hourlyStats {
-  display: none;
+  display: block;
 }
 
 .hourlyStats, th, td {
@@ -176,6 +172,8 @@ h4 {
       /*Vanishing table formatting: */
     .hoverTable {
       float: right;
+      display: block;
+      position: static;
     }
     .hoverTable:hover .hourlyStats {
       display: block;

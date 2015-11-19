@@ -69,6 +69,7 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
     //Random sample of average customers per hour:
   this.custHourly = hourlyCust(this.hours, this.minCust, this.maxCust);
 
+    //Customers per day:
   this.custDaily = dailyCust(this.custHourly);
 
     //Donuts to bake per hour:
@@ -162,29 +163,42 @@ function fieldsets (donutshop) {
       var donutsDailySpan = document.createElement("span");
         donutsDailySpan.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
         +"bake";
-      var hoverTable = document.createElement("span");
-        hoverTable.className = "hoverTable";
+      var hoverTableSpan = document.createElement("div");
+        hoverTableSpan.className = "hoverTable";
       var hoverTableButton = document.createElement("button");
         hoverTableButton.type = "button";
         hoverTableButton.id = "shop"
         +this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
       var statsHourly = document.createElement("table");
         statsHourly.className = "hourlyStats";
-        var trow1 = document.createElement("tr");
-          trow1.id = "highlight";
-        var col1Head = document.createElement("th");
-        var col1Data.hoursDisplay();
-        var trow2 = document.createElement("tr");
-        var col2Head = document.createElement("th");
-        var col2Data.custDisplay();
-        var trow3 = document.createElement("tr");
-        var col3Head = document.createElement("th");
-        var col3Data.salesDisplay();
-
-
+        var row1 = statsHourly.insertRow(0);
+          row1.id = "highlight";
+        var col1Head = row1.insertCell(0);
+          col1Head.appendChild(document.createTextNode("Each Hour Open:"));
+/*        var col1Data;
+          for (cellIndex = 0; cellIndex < this.donutShop[index].indexHours.length; cellIndex++) {
+            col1Data += row1.insertCell(-1);
+            col1Data.innerHTML = this.donutShop[index].indexHours[cellIndex];
+          }; */
+        var row2 = statsHourly.insertRow(1);
+        var col2Head = row2.insertCell(0);
+          col2Head.appendChild(document.createTextNode("Customers per Hour:"));
+/*        var col2Data;
+          for (cellIndex = 0; cellIndex < this.donutShop[index].custHourly.length; cellIndex++) {
+            col2Data += row2.insertCell(-1);
+            col2Data.innerHTML = this.donutShop[index].custHourly[cellIndex];
+          }; */
+        var row3 = statsHourly.insertRow(2);
+        var col3Head = row3.insertCell(0);
+          col3Head.appendChild(document.createTextNode("Sales per Hour:"));
+/*        var col3Data;
+          for (cellIndex = 0; cellIndex < this.donutShop[index].bakeHourly.length; cellIndex++) {
+            col3Data += row3.insertCell(-1);
+            col3Data.innerHTML = this.donutShop[index].bakeHourly[cellIndex];
+          }; */
 
           //Functions to generate hourly Shop info for hidden table:
-        function hoursDisplay () {
+/*        function hoursDisplay () {
           for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours.length; hrIndex++) {
             var hrDisp = trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[hrIndex]));
             hrDisp += trow1.insertCell(document.createTextNode(this.donutShop[index].custHourly[hrIndex]));
@@ -207,7 +221,7 @@ function fieldsets (donutshop) {
           return sDisp;
           }
         };
-
+*/
       //Instantiate elements created:
     form.appendChild(fieldset);
     fieldset.appendChild(fieldsetLegend);
@@ -234,22 +248,28 @@ function fieldsets (donutshop) {
       donutstDailyLabel.appendChild(document.createTextNode("Average Donuts Baked Daily: "));
       donutstDailyLabel.appendChild(donutsDailySpan);
       donutsDailySpan.appendChild(document.createTextNode(this.donutShop[index].bakeDaily))
-    fieldset.appendChild(hoverTable);
-      hoverTable.appendChild(hoverTableButton);
+    fieldset.appendChild(hoverTableSpan);
+      hoverTableSpan.appendChild(hoverTableButton);
       hoverTableButton.appendChild(document.createTextNode("Hourly Statistics"));
     fieldset.appendChild(statsHourly);
-      statsHourly.appendChild(trow1);
-        trow1.appendChild(col1Head);
-          col1Head.appendChild(document.createTextNode("Each Hour Open:"));
-        trow1.appendChild(col1Data);
-      statsHourly.appendChild(trow2);
-        trow2.appendChild(col2Head);
-          col2Head.appendChild(document.createTextNode("Customers per Hour:"));
-        trow2.appendChild(col2Data);
-      statsHourly.appendChild(trow3);
-        trow3.appendChild(col3Head);
-          col3Head.appendChild(document.createTextNode("Sales per Hour:"));
-        trow3.appendChild(col3Data);
+        var col1Data;
+          for (cellIndex = 0; cellIndex < this.donutShop[index].indexHours.length; cellIndex++) {
+            col1Data += row1.insertCell(-1);
+            col1Data.innerHTML = "test";
+            console.log(col1Data);
+          };
+
+//          this.donutShop[index].indexHours[cellIndex]
+        var col2Data;
+          for (cellIndex = 0; cellIndex < this.donutShop[index].custHourly.length; cellIndex++) {
+            col2Data += row2.insertCell(-1);
+            col2Data.innerHTML = this.donutShop[index].custHourly[cellIndex];
+          };
+        var col3Data;
+          for (cellIndex = 0; cellIndex < this.donutShop[index].bakeHourly.length; cellIndex++) {
+            col3Data += row3.insertCell(-1);
+            col3Data.innerHTML = this.donutShop[index].bakeHourly[cellIndex];
+          };
 
 
 /*
