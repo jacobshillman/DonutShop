@@ -204,6 +204,8 @@ function fieldsets (donutshop) {
     donutstDailyLabel.appendChild(donutsDailySpan);
       donutsDailySpan.appendChild(document.createTextNode(this.donutShop[index].bakeDaily))
     
+/*Create span for :hover event:   */
+    var 
 /*Create button to show hourly statistics on:hover:   */
     var hoverTable = document.createElement("button");
       hoverTable.type = "button";
