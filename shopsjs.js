@@ -89,38 +89,29 @@ donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
   /*Write Shop content to page:   */
 function fieldsets (donutshop) {
+
   for (var index = 0; index < donutShop.length; index++){
 
 /*Create checkboxes to Show/Hide shop fieldset on checkbox click for each Shop:   */
-    var form = document.getElementById("shopsData");
-    var box = document.createElement("div");
-      box.className="box";
-    shopsData.appendChild(box);
     var check = document.createElement("input");
       check.type="checkbox";
       check.name=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
       check.value=this.donutShop[index].shopName;
       check.form="shopsData";
       check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
-//      check.setAttribute("onclick", displayShop());
-    box.appendChild(check);
+    shopsData.appendChild(check);
         //Create labels for checkboxes for each Shop:
     var label = document.createElement("label");
       label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select"
       label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
       label.appendChild(document.createTextNode(this.donutShop[index].shopName));
-    box.appendChild(label);
-  } /*Checkbox for loop closure.  */
-
-/*Populate shopsData table:   */
-  for (var index = 0; index < donutShop.length; index++){
+    shopsData.appendChild(label);
 
 /*Create fieldset:   */
-    var form = document.getElementById("shopsData");
       var fieldset = document.createElement("fieldset");
         fieldset.className="donuts";
         fieldset.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
-      form.appendChild(fieldset);
+      shopsData.appendChild(fieldset);
 
 /*Create fieldset legend:   */
     var fieldsetLegend = document.createElement("legend");
@@ -205,14 +196,16 @@ function fieldsets (donutshop) {
       donutsDailySpan.appendChild(document.createTextNode(this.donutShop[index].bakeDaily))
     
 /*Create span for :hover event:   */
-    var 
+    var tableHover = document.createElement("span");
+      tableHover.className = "hoverTable";
+    fieldset.appendChild(tableHover);
 /*Create button to show hourly statistics on:hover:   */
-    var hoverTable = document.createElement("button");
-      hoverTable.type = "button";
-      hoverTable.className = "tableButton";
-      hoverTable.id = "shop"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
-      hoverTable.appendChild(document.createTextNode("Hourly Statistics"));
-    fieldset.appendChild(hoverTable);
+    var tableButton = document.createElement("button");
+      tableButton.type = "button";
+      tableButton.className = "tableButton";
+      tableButton.id = "shop"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
+      tableButton.appendChild(document.createTextNode("Hourly Statistics"));
+    tableHover.appendChild(tableButton);
       
 /*Create hourly statistics table:   */
     var statsHourly = document.createElement("table");
@@ -251,70 +244,9 @@ function fieldsets (donutshop) {
         var row3Data = row3.insertCell(-1);
         row3Data.innerHTML= this.donutShop[index].bakeHourly[cellIndex];};
 
-    fieldset.appendChild(statsHourly);
-
+    tableHover.appendChild(statsHourly);
 
   } /*shopsData table for loop closure.  */
 
 };  /*Fieldset function closure.  */
-
-
-
-/*
-  var fieldsetTest=false;
-function displayShop(){
-    if(fieldsetTest){
-     document.getElementById("BlueStarDonuts").id="BlueStarDonutsChecked";
-      fieldsetTest=false;
-    }else{
-      document.getElementById("BlueStarDonutsChecked").id="BlueStarDonuts";
-      fieldsetTest=true;
-    }
-};
-*/
-
-/*
-    document.write("<fieldset class='donuts' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
-      +"'>");
-
-    document.write("<legend><h4>"+this.donutShop[index].shopName+"</h4></legend>");
-
-    document.write("<label>Minimum Customers: </label><input type='text'"+
-     "class='minCust' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
-     +"minCust'"+"value='"+this.donutShop[index].minCust+"''>");
-
-    document.write("<label>Maximum Customers: </label><input type='text'"+
-     "class='maxCust' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
-     +"maxCust'"+"value='"+this.donutShop[index].maxCust+"'><br>");
-
-    document.write("<label>Average Purchase: </label><input type='text'"+
-     "class='avgPurchase' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
-     +"avgPurchase'"+"value='"+this.donutShop[index].avgPurchase+"'>");
-
-    document.write("<label>Hours Open: </label><input type='text'"+
-     "class='hours' id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
-     +"hours'"+"value='"+this.donutShop[index].hours+"'><br>");
-
-    document.write("<div class='custDaily'>Average Daily Customers: <span "+
-     "id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"cust'>"
-     +this.donutShop[index].custDaily+"</span></div>");
-
-    document.write("<span class='donutsPerDay'>Average Donuts Baked Daily: <span "+
-     "id='"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"bake'>"
-     +this.donutShop[index].bakeDaily+
-     "</span></span>");
-
-    document.write("<span class='hoverTable'><button id='shop"+
-      this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
-      +"' type='button'>Hourly Statistics</button>");
-
-    document.write("<table class='hourlyStats'>"
-      +hoursDisplay(this.donutShop[index])
-      +custDisplay(this.donutShop[index])
-      +salesDisplay(this.donutShop[index])
-      +"</table>");
-
-    document.write("</fieldset>");
-
-*/
 

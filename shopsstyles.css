@@ -116,7 +116,12 @@ aside {
   min-width: 465px;
   background-color: #cc99ff;
   position: static;
+  display: none;
 }
+    /*Show/hide .donuts fieldsets:  */
+  #input[type=checkbox]:checked .donuts {
+    display: block;
+  }
 
 h4 {
   text-decoration: underline;
@@ -148,13 +153,17 @@ h4 {
 }
 
   /*Vanishing table with Shops stats formatting:  */
+.hoverTable {
+  position: static;
+}
+
 #highlight {
   background-color: orange;
 }
 
 .hourlyStats {
   background-color: white;
-  display: block;
+  display: none;
 }
 
 .hourlyStats, tbody, th, td {
@@ -172,26 +181,16 @@ h4 {
 }
 
 .tableButton {
-  display: block;
   float: right;
   margin: 1em;
 }
 
       /*Vanishing table formatting: */
-    .tableButton {
-      float: right;
-      display: block;
-      position: relative;
-    }
-    .tableButton:hover .hourlyStats {
+    .hoverTable:hover .hourlyStats {
       display: block;
       position: absolute;
       right: 0;
     }
-
-input:checked fieldset {
-  display: block;
-}
 
   /*Footer formatting:  */
 footer {
