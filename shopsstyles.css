@@ -153,10 +153,11 @@ h4 {
 }
 
 .hourlyStats {
+  background-color: white;
   display: block;
 }
 
-.hourlyStats, th, td {
+.hourlyStats, tbody, th, td {
   border-collapse: collapse;
   border: 2px solid black;
 }
@@ -167,19 +168,25 @@ h4 {
 
 .hourlyStats td {
   text-align: center;
-  width: 35px; }
+  width: 35px; 
+}
+
+.tableButton {
+  display: block;
+  float: right;
+  margin: 1em;
+}
 
       /*Vanishing table formatting: */
-    .hoverTable {
+    .tableButton {
       float: right;
       display: block;
-      position: static;
+      position: relative;
     }
-    .hoverTable:hover .hourlyStats {
+    .tableButton:hover .hourlyStats {
       display: block;
       position: absolute;
       right: 0;
-      background-color: white;
     }
 
 input:checked fieldset {
