@@ -103,7 +103,6 @@ aside {
 
 #selection {
   margin: 1em 0em 1em 1em;
-
 }
 
   /*Dynamically generated checkboxes:   */
@@ -122,7 +121,7 @@ aside {
   min-width: 465px;
   background-color: #cc99ff;
   position: static;
-  display: none;
+  display: block;
 }
     /*Show/hide .donuts fieldsets:  */
   .showFields:checked ~ fieldset {
@@ -169,7 +168,7 @@ h4 {
 
 .hourlyStats {
   background-color: white;
-  display: none;
+  display: inline-block;
 }
 
 .hourlyStats, tbody, th, td {

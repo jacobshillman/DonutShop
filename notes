@@ -13,3 +13,4 @@
 
   for (var index = 0; index < donutShop.length; index++){
         //fieldsets must be siblings to the checkbox (per my latest) to show/hide them.
+

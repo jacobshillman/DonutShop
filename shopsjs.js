@@ -56,7 +56,7 @@ function dailyBake (bake) {
     };
 
   /*Shop constructor:   */
-function Shop (name,minCust,maxCust,avgPurchase,hours) {
+function Shop (name, minCust, maxCust, avgPurchase, hours) {
   this.shopName = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
@@ -87,32 +87,43 @@ donutShop[2] = new Shop("Coco", 9, 23, 6.33, 11);
 donutShop[3] = new Shop("Tonallis Donuts & Cream", 2, 28, 1.25, 17);
 donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
+/*
+function updateShop(changedSetting) {
+  var currentShop = donutShop[this];
+  var propertyChanged = changedSetting.getAttribute("name");
+  console.log("Previous Setting: "+currentShop[propertyChanged]);
+  console.log("New Setting: "+changedSetting.value);
+  currentShop[propertyChanged] = parseInt(changedSetting.value);
+  currentShop.generateData();
+};
+*/
+
   /*Write Shop content to page:   */
 function fieldsets (donutshop) {
 
   for (var index = 0; index < donutShop.length; index++){
 
-//Create labels for checkboxes for each Shop:
+/*Create labels for checkboxes for each Shop:   */
     var label = document.createElement("label");
-      label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
+      label.htmlFor = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
       label.className = "checkLabel"
-      label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
+      label.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
     shopsData.appendChild(label);
 /*Create checkboxes to Show/Hide shop fieldset on checkbox click for each Shop:   */
     var check = document.createElement("input");
-      check.type="checkbox";
-      check.name=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
-      check.value=this.donutShop[index].shopName;
-      check.form="shopsData";
+      check.type = "checkbox";
+      check.name = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
+      check.value = this.donutShop[index].shopName;
+      check.form = "shopsData";
       check.className = "showFields";
-      check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
+      check.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
     label.appendChild(check);
       label.appendChild(document.createTextNode(this.donutShop[index].shopName));
 
 /*Create fieldset:   */
       var fieldset = document.createElement("fieldset");
         fieldset.className="donuts";
-        fieldset.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
+        fieldset.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
       label.appendChild(fieldset);
 
 /*Create fieldset legend:   */
@@ -222,7 +233,7 @@ function fieldsets (donutshop) {
 /*Create hourly statistics table first row data cells:   */
       for (cellIndex = 0; cellIndex < this.donutShop[index].indexHours.length; cellIndex++) {
         var row1Data = row1.insertCell(-1);
-        row1Data.innerHTML= this.donutShop[index].indexHours[cellIndex];};
+        row1Data.innerHTML = this.donutShop[index].indexHours[cellIndex];};
 /*Create hourly statistics table second row:   */
     var row2 = statsHourly.insertRow(1);
 /*Create hourly statistics table second row header cell:   */
@@ -233,7 +244,7 @@ function fieldsets (donutshop) {
     var row2Data;
       for (cellIndex = 0; cellIndex < this.donutShop[index].custHourly.length; cellIndex++) {
         var row2Data = row2.insertCell(-1);
-        row2Data.innerHTML= this.donutShop[index].custHourly[cellIndex];};
+        row2Data.innerHTML = this.donutShop[index].custHourly[cellIndex];};
 /*Create hourly statistics table third row:   */
     var row3 = statsHourly.insertRow(2);
 /*Create hourly statistics table third row header cell:   */
@@ -244,7 +255,7 @@ function fieldsets (donutshop) {
     var row3Data;
       for (cellIndex = 0; cellIndex < this.donutShop[index].bakeHourly.length; cellIndex++) {
         var row3Data = row3.insertCell(-1);
-        row3Data.innerHTML= this.donutShop[index].bakeHourly[cellIndex];};
+        row3Data.innerHTML = this.donutShop[index].bakeHourly[cellIndex];};
 
     tableHover.appendChild(statsHourly);
 
