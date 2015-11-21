@@ -1,0 +1,15 @@
+//failed function to add event listener to checkboxes:
+      check.addEventListener("click", function(){
+        var elem = document.getElementById(this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,''));
+          if (document.getElementById(this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')
+            +"Select").checked) {
+          elem.style.display='block';
+          } else {elem.style.display='none';
+          }
+      });
+
+//separate loop to generate fieldsets
+  };
+
+  for (var index = 0; index < donutShop.length; index++){
+        //fieldsets must be siblings to the checkbox (per my latest) to show/hide them.

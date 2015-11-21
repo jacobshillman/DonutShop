@@ -92,26 +92,28 @@ function fieldsets (donutshop) {
 
   for (var index = 0; index < donutShop.length; index++){
 
+//Create labels for checkboxes for each Shop:
+    var label = document.createElement("label");
+      label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
+      label.className = "checkLabel"
+      label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
+    shopsData.appendChild(label);
 /*Create checkboxes to Show/Hide shop fieldset on checkbox click for each Shop:   */
     var check = document.createElement("input");
       check.type="checkbox";
       check.name=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
       check.value=this.donutShop[index].shopName;
       check.form="shopsData";
+      check.className = "showFields";
       check.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select";
-    shopsData.appendChild(check);
-        //Create labels for checkboxes for each Shop:
-    var label = document.createElement("label");
-      label.htmlFor=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Select"
-      label.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"Label";
+    label.appendChild(check);
       label.appendChild(document.createTextNode(this.donutShop[index].shopName));
-    shopsData.appendChild(label);
 
 /*Create fieldset:   */
       var fieldset = document.createElement("fieldset");
         fieldset.className="donuts";
         fieldset.id=this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
-      shopsData.appendChild(fieldset);
+      label.appendChild(fieldset);
 
 /*Create fieldset legend:   */
     var fieldsetLegend = document.createElement("legend");
@@ -160,7 +162,7 @@ function fieldsets (donutshop) {
       avgPurchText.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"avgPurchase";
       avgPurchText.value = this.donutShop[index].avgPurchase;
     fieldset.appendChild(avgPurchText);
-    
+
 /*Create hours open per day label:   */
     var hoursLabel = document.createElement("label");
     fieldset.appendChild(hoursLabel);
@@ -172,7 +174,7 @@ function fieldsets (donutshop) {
       hoursText.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"hours";
       hoursText.value = this.donutShop[index].hours;
     fieldset.appendChild(hoursText);
-    
+
 /*Create average customers daily label:   */
     var custDailyLabel = document.createElement("div");
       custDailyLabel.className = "custDaily";
@@ -183,7 +185,7 @@ function fieldsets (donutshop) {
       custDailySpan.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"cust";
     custDailyLabel.appendChild(custDailySpan);
       custDailySpan.appendChild(document.createTextNode(this.donutShop[index].custDaily));
-    
+
 /*Create average donuts sold daily label:   */
     var donutstDailyLabel = document.createElement("div");
       donutstDailyLabel.className = "custDaily";
@@ -194,7 +196,7 @@ function fieldsets (donutshop) {
       donutsDailySpan.id = this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'')+"bake";
     donutstDailyLabel.appendChild(donutsDailySpan);
       donutsDailySpan.appendChild(document.createTextNode(this.donutShop[index].bakeDaily))
-    
+
 /*Create span for :hover event:   */
     var tableHover = document.createElement("span");
       tableHover.className = "hoverTable";
@@ -206,7 +208,7 @@ function fieldsets (donutshop) {
       tableButton.id = "shop"+this.donutShop[index].shopName.replace(/[^a-zA-Z0-9]/g,'');
       tableButton.appendChild(document.createTextNode("Hourly Statistics"));
     tableHover.appendChild(tableButton);
-      
+
 /*Create hourly statistics table:   */
     var statsHourly = document.createElement("table");
       statsHourly.className = "hourlyStats";

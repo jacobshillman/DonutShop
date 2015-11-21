@@ -98,6 +98,7 @@ aside {
   margin: 1em 0em 1em 8em;
   width: 60%;
   float: both;
+  position: static;
 }
 
 #selection {
@@ -105,12 +106,17 @@ aside {
 
 }
 
-  /*Dynamically generated Shops Data:  */
-.box {
-  margin-left: 1em;
-  padding: 5px;
+  /*Dynamically generated checkboxes:   */
+.checkLabel {
+  display: block;
+  position: static;
 }
 
+.showFields {
+  margin: 1em 2em;
+}
+
+  /*Dynamically generated Shops Data:  */
 .donuts {
   margin: 2em 1em;
   min-width: 465px;
@@ -119,7 +125,7 @@ aside {
   display: none;
 }
     /*Show/hide .donuts fieldsets:  */
-  #input[type=checkbox]:checked .donuts {
+  .showFields:checked ~ fieldset {
     display: block;
   }
 
@@ -177,7 +183,7 @@ h4 {
 
 .hourlyStats td {
   text-align: center;
-  width: 35px; 
+  width: 35px;
 }
 
 .tableButton {
