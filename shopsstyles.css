@@ -122,7 +122,7 @@ aside {
 }
     /*Show/hide .donuts fieldsets:  */
   .hideDonuts {
-    display: none;
+    display: block;
   }
 
 h4 {
@@ -186,14 +186,6 @@ h4 {
   float: right;
   margin: 1em;
 }
-
-      /*Vanishing table formatting: */
-    .hoverTable:hover .hourlyStats {
-      display: block;
-      position: absolute;
-      right: 0;
-    }
-
   /*Footer formatting:  */
 footer {
   background-color: red;

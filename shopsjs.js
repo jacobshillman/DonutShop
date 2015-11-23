@@ -53,6 +53,18 @@ function displayShop (id) {
   document.getElementById("shop"+id).setAttribute("class", "showDonuts");
 };
 
+function newValues (delta) {
+  var thisShop = donutShop[startValue];
+  console.log(thisShop);
+  var increment = delta.getAttribute("name");
+  thisShop[increment] = parseInt(delta.value);
+  console.log(thisShop);
+  console.log(thisShop.custHourly);
+//  thisShop.minCust.minCustWrite();
+  console.log(thisShop.minCustWrite);
+  console.log(startValue);
+};
+
     /*Insert date:  */
   function date () {
   var dt = new Date();
@@ -84,6 +96,10 @@ function Shop (name, minCust, maxCust, avgPurchase, hours) {
 
 /*Donuts to bake per day:   */
   this.bakeDaily = dailyBake(this.bakeHourly);
+
+/*Generat number inputs for display:  */
+
+
 };
 
   /*Init Shop instances:   */
@@ -94,21 +110,8 @@ donutShop[2] = new Shop("Coco", 9, 23, 6.33, 11);
 donutShop[3] = new Shop("Tonallis Donuts & Cream", 2, 28, 1.25, 17);
 donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
-function newValues (delta) {
-  var thisShop = donutShop[startValue];
-  console.log(thisShop);
-  var increment = delta.getAttribute("name");
-  thisShop[increment] = parseInt(delta.value);
-  console.log(delta.value);
-  console.log(donutShop[thisShop]);
-  console.log(thisShop);
-//  hourlyCust(thisShop, delta.value, thisShop.maxCust));
-};
-
-
-  /*Write Shop content to page:   */
-function fieldsets () {
-
+/*Write radio buttons to select which shop to view:   */
+function radioSelect () {
   for (var index = 0; index < donutShop.length; index++){
 /*Create labels for radioboxes for each Shop:   */
     var label = document.createElement("label");
@@ -127,16 +130,19 @@ function fieldsets () {
       });
     label.appendChild(radio);
       label.appendChild(document.createTextNode(this.donutShop[index].shopName));
-  };
+  } /*for loop closure.   */
+}; /*radioSelect function closure.  */
 
+radioSelect();
+
+  /*Write Shop content to page:   */
+function fieldsets () {
   for (var index = 0; index < donutShop.length; index++){
-
 /*Create fieldset:   */
       var fieldset = document.createElement("fieldset");
         fieldset.className="hideDonuts";
         fieldset.id = "shop"+index;
       document.getElementById("shopsData").appendChild(fieldset);
-
 /*Create fieldset legend:   */
     var fieldsetLegend = document.createElement("legend");
     fieldset.appendChild(fieldsetLegend);
@@ -144,10 +150,16 @@ function fieldsets () {
     var h4 = document.createElement("h4");
       fieldsetLegend.appendChild(h4);
         h4.appendChild(document.createTextNode(this.donutShop[index].shopName));
+  } /*for loop closure.   */
+}; /*Fieldset function closure.  */
 
+fieldsets()
+
+function minCustWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create minimum customers per hour label:   */
     var minCustLabel = document.createElement("Label");
-    fieldset.appendChild(minCustLabel);
+    document.getElementById("shop"+index).appendChild(minCustLabel);
       minCustLabel.appendChild(document.createTextNode("Minimum Customers: "));
 /*Create minimum customers per hour textbox:   */
     var minCustText = document.createElement("input");
@@ -159,11 +171,17 @@ function fieldsets () {
       minCustText.addEventListener("change", function () {
         newValues(this);
       });
-    fieldset.appendChild(minCustText);
+    document.getElementById("shop"+index).appendChild(minCustText);
+  } /*for loop closure.   */
+}; /*minCustWrite function closure.  */
 
+minCustWrite();
+
+function maxCustWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create maximum customers per hour label:   */
     var maxCustLabel = document.createElement("label");
-    fieldset.appendChild(maxCustLabel);
+    document.getElementById("shop"+index).appendChild(maxCustLabel);
       maxCustLabel.appendChild(document.createTextNode("Maximum Customers: "));
 /*Create minimum customers per hour textbox:   */
     var maxCustText = document.createElement("input");
@@ -175,15 +193,27 @@ function fieldsets () {
       maxCustText.addEventListener("change", function () {
         newValues(this);
       });
-    fieldset.appendChild(maxCustText);
+    document.getElementById("shop"+index).appendChild(maxCustText);
+  } /*for loop closure.   */
+}; /*maxCustWrite function closure.  */
 
+maxCustWrite();
+
+function lineBreakWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Line break for formatting:   */
     var lineBreak = document.createElement("br");
-      fieldset.appendChild(lineBreak);
+      document.getElementById("shop"+index+"minCust").appendChild(lineBreak);
+  } /*for loop closure.   */
+}; /*avgPurchWrite function closure.  */
 
+lineBreakWrite();
+
+function avgPurchWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create average purchase per customer label:   */
     var avgPurchLabel = document.createElement("label");
-    fieldset.appendChild(avgPurchLabel);
+    document.getElementById("shop"+index).appendChild(avgPurchLabel);
       avgPurchLabel.appendChild(document.createTextNode("Average Purchase: "));
 /*Create average purchase per customer textbox:   */
     var avgPurchText = document.createElement("input");
@@ -195,11 +225,17 @@ function fieldsets () {
       avgPurchText.addEventListener("change", function () {
         newValues(this);
       });
-    fieldset.appendChild(avgPurchText);
+    document.getElementById("shop"+index).appendChild(avgPurchText);
+  } /*for loop closure.   */
+}; /*avgPurchWrite function closure.  */
 
+avgPurchWrite();
+
+function hoursWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create hours open per day label:   */
     var hoursLabel = document.createElement("label");
-    fieldset.appendChild(hoursLabel);
+    document.getElementById("shop"+index).appendChild(hoursLabel);
       hoursLabel.appendChild(document.createTextNode("Hours Open: "));
 /*Create hours open per day textbox:   */
     var hoursText = document.createElement("input");
@@ -211,42 +247,48 @@ function fieldsets () {
       hoursText.addEventListener("change", function () {
         newValues(this);
       });
-    fieldset.appendChild(hoursText);
+    document.getElementById("shop"+index).appendChild(hoursText);
+  } /*for loop closure.   */
+}; /*hoursWrite function closure.  */
 
+hoursWrite();
+
+function custDailyWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create average customers daily label:   */
     var custDailyLabel = document.createElement("div");
       custDailyLabel.className = "custDaily";
-    fieldset.appendChild(custDailyLabel);
+    document.getElementById("shop"+index).appendChild(custDailyLabel);
       custDailyLabel.appendChild(document.createTextNode("Average Daily Customers: "));
 /*Create average customers daily span:   */
     var custDailySpan = document.createElement("span");
       custDailySpan.id = "shop"+index+"cust";
     custDailyLabel.appendChild(custDailySpan);
       custDailySpan.appendChild(document.createTextNode(this.donutShop[index].custDaily));
+  } /*for loop closure.   */
+}; /*custDailyWrite function closure.  */
 
+custDailyWrite();
+
+function salesDailyWrite () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create average donuts sold daily label:   */
     var donutstDailyLabel = document.createElement("div");
       donutstDailyLabel.className = "custDaily";
-    fieldset.appendChild(donutstDailyLabel);
+    document.getElementById("shop"+index).appendChild(donutstDailyLabel);
       donutstDailyLabel.appendChild(document.createTextNode("Average Donuts Baked Daily: "));
 /*Create average donuts sold daily span:   */
     var donutsDailySpan = document.createElement("span");
       donutsDailySpan.id = "shop"+index+"bake";
     donutstDailyLabel.appendChild(donutsDailySpan);
       donutsDailySpan.appendChild(document.createTextNode(this.donutShop[index].bakeDaily))
+  } /*for loop closure.   */
+}; /*salesDailyWrite function closure.  */
 
-/*Create span for :hover event:   */
-    var tableHover = document.createElement("span");
-      tableHover.className = "hoverTable";
-    fieldset.appendChild(tableHover);
-/*Create button to show hourly statistics on:hover:   */
-    var tableButton = document.createElement("button");
-      tableButton.type = "button";
-      tableButton.className = "tableButton";
-      tableButton.id = "show"+"shop"+index;
-      tableButton.appendChild(document.createTextNode("Hourly Statistics"));
-    tableHover.appendChild(tableButton);
+salesDailyWrite();
 
+function hiddenTable () {
+  for (var index = 0; index < donutShop.length; index++){
 /*Create hourly statistics table:   */
     var statsHourly = document.createElement("table");
       statsHourly.className = "hourlyStats";
@@ -283,12 +325,32 @@ function fieldsets () {
       for (cellIndex = 0; cellIndex < this.donutShop[index].bakeHourly.length; cellIndex++) {
         var row3Data = row3.insertCell(-1);
         row3Data.innerHTML = this.donutShop[index].bakeHourly[cellIndex];};
+    document.getElementById(index+"table").appendChild(statsHourly);
+  } /*for loop closure.   */
+}; /*hiddenTable function closure.  */
 
-    tableHover.appendChild(statsHourly);
 
-  } /*shopsData table for loop closure.  */
 
-};  /*Fieldset function closure.  */
+function hoverButtonWrite () {
+  for (var index = 0; index < donutShop.length; index++){
+/*Create span for :hover event:   */
+    var tableHover = document.createElement("span");
+      tableHover.className = "hoverTable";
+      tableHover.id = index+"table";
+    document.getElementById("shop"+index).appendChild(tableHover);
+/*Create button to show hourly statistics on:hover:   */
+    var tableButton = document.createElement("button");
+      tableButton.type = "button";
+      tableButton.className = "tableButton";
+      tableButton.id = "show"+"shop"+index;
+      tableButton.addEventListener("click", function () {
+        hiddenTable();
+      });
+      tableButton.appendChild(document.createTextNode("Hourly Statistics"));
+    tableHover.appendChild(tableButton);
+  } /*for loop closure.   */
+}; /*hoverButton function closure.  */
 
-fieldsets()
+hoverButtonWrite();
+
 
