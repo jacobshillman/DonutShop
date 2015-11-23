@@ -105,18 +105,15 @@ aside {
   margin: 1em 0em 1em 1em;
 }
 
-  /*Dynamically generated checkboxes:   */
-.checkLabel {
+  /*Dynamically generated radio buttons:   */
+.radioLabel {
   display: block;
   position: static;
-}
-
-.showFields {
   margin: 1em 2em;
 }
 
   /*Dynamically generated Shops Data:  */
-.donuts {
+.showDonuts {
   margin: 2em 1em;
   min-width: 465px;
   background-color: #cc99ff;
@@ -124,8 +121,8 @@ aside {
   display: block;
 }
     /*Show/hide .donuts fieldsets:  */
-  .showFields:checked ~ fieldset {
-    display: block;
+  .hideDonuts {
+    display: none;
   }
 
 h4 {
