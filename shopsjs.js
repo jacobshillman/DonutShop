@@ -56,6 +56,28 @@ function dailyBake (bake) {
   return bakedDaily;
 };
 
+  //Functions to generate hourly Shop info for table:
+function hoursDisplay (shopID) {
+  var hrDisp = "<tr id='highlight'><th>Each Hour Open:</th>";
+    for (hrIndex = 0; hrIndex < shopID.indexHours.length; hrIndex++) {
+      hrDisp +="<td>"+shopID.indexHours[hrIndex]+"</td>";
+    }
+  hrDisp += "</tr>"
+  return hrDisp;  }
+function custDisplay (shopID) {
+  var cDisp = "<tr><th>Customers per Hour:</th>";
+    for (custIndex = 0; custIndex < shopID.custHourly.length; custIndex++) {
+      cDisp +="<td>"+shopID.custHourly[custIndex]+"</td>";
+    }
+  cDisp += "</tr>"
+  return cDisp; }
+function salesDisplay (shopID) {
+  var sDist = "<tr><th>Sales per Hour:</th>";
+    for (saleIndex = 0; saleIndex < shopID.bakeHourly.length; saleIndex++) {
+      sDist +="<td>"+shopID.bakeHourly[saleIndex]+"</td>";
+    }
+  sDist += "</tr>"
+  return sDist; }
 
 //Shop constructor:
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
@@ -80,29 +102,6 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.bakeDaily = dailyBake(this.bakeHourly);
 };
 
-  //Functions to generate hourly Shop info for table:
-function hoursDisplay (shopID) {
-  var hrDisp = "<tr id='highlight'><th>Each Hour Open:</th>";
-    for (hrIndex = 0; hrIndex < shopID.indexHours.length; hrIndex++) {
-      hrDisp +="<td>"+shopID.indexHours[hrIndex]+"</td>";
-    }
-  hrDisp += "</tr>"
-  return hrDisp;  }
-function custDisplay (shopID) {
-  var cDisp = "<tr><th>Customers per Hour:</th>";
-    for (custIndex = 0; custIndex < shopID.custHourly.length; custIndex++) {
-      cDisp +="<td>"+shopID.custHourly[custIndex]+"</td>";
-    }
-  cDisp += "</tr>"
-  return cDisp; }
-function salesDisplay (shopID) {
-  var sDist = "<tr><th>Sales per Hour:</th>";
-    for (saleIndex = 0; saleIndex < shopID.bakeHourly.length; saleIndex++) {
-      sDist +="<td>"+shopID.bakeHourly[saleIndex]+"</td>";
-    }
-  sDist += "</tr>"
-  return sDist; }
-
 //Init Shop instances:
 var donutShop = [5];
 donutShop[0] = new Shop("Blue Star Donuts", 8, 43, 4.5, 11);
@@ -118,19 +117,19 @@ function fieldsets (donutshop) {
 
     document.write("<legend><h4>"+this.donutShop[index].shopName+"</h4></legend>");
 
-    document.write("<label>Minimum Customers: </label><input type='text'"+
+    document.write("<label>Minimum Customers: </label><input type='number'"+
      "class='minCust' id='"+this.donutShop[index].shopName+" minCust'"+
       "value='"+this.donutShop[index].minCust+"''>");
 
-    document.write("<label>Maximum Customers: </label><input type='text'"+
+    document.write("<label>Maximum Customers: </label><input type='number'"+
      "class='maxCust' id='"+this.donutShop[index].shopName+" maxCust'"+
       "value='"+this.donutShop[index].maxCust+"'><br>");
 
-    document.write("<label>Average Purchase: </label><input type='text'"+
+    document.write("<label>Average Purchase: </label><input type='number'"+
      "class='avgPurchase' id='"+this.donutShop[index].shopName+" avgPurchase'"+
       "value='"+this.donutShop[index].avgPurchase+"'>");
 
-    document.write("<label>Hours Open: </label><input type='text'"+
+    document.write("<label>Hours Open: </label><input type='number'"+
      "class='hours' id='"+this.donutShop[index].shopName+" hours'"+
       "value='"+this.donutShop[index].hours+"'><br>");
 
@@ -138,13 +137,10 @@ function fieldsets (donutshop) {
      "id='"+this.donutShop[index].shopName+" cust'>"
      +this.donutShop[index].custDaily+"</span></div>");
 
-    document.write("<span class='donutsPerDay'>Average Donuts Baked Daily: <span "+
+    document.write("<div class='donutsPerDay'>Average Donuts Baked Daily: <span "+
      "id='"+this.donutShop[index].shopName+" bake'>"
      +this.donutShop[index].bakeDaily+
-     "</span></span>");
-
-    document.write("<span class='hoverTable'><button id='shop"+
-      this.donutShop[index].shopName+"' type='button'>Hourly Statistics</button>");
+     "</span></div>");
 
     document.write("<table class='hourlyStats'>"
       +hoursDisplay(this.donutShop[index])
