@@ -105,6 +105,10 @@ aside {
   display: block;
 }
 
+.hideDonuts {
+  display: block;
+}
+
   /*Dynamically generated fieldsets:  */
 fieldset {
   margin: 2em 1em;

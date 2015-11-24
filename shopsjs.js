@@ -79,6 +79,16 @@ function salesDisplay (shopID) {
   sDist += "</tr>"
   return sDist; }
 
+var startValue = 0;
+var shown = "shop0";
+
+function displayShop (id) {
+  document.getElementById(shown).setAttribute("class", "hideDonuts");
+  shown = "shop"+id;
+  startValue = id;
+  document.getElementById("shop"+id).setAttribute("class", "showDonuts");
+};
+
 /*Shop constructor:  */
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
@@ -110,35 +120,59 @@ donutShop[2] = new Shop("Coco", 9, 23, 6.33, 11);
 donutShop[3] = new Shop("Tonallis Donuts & Cream", 2, 28, 1.25, 17);
 donutShop[4] = new Shop("Sesame Donuts", 8, 58, 3.75, 24);
 
+var thisShop = new Shop();
+
+/*
+function newValues (delta) {
+  var thisShop = donutShop[startValue];
+  var increment = delta.getAttribute("name");
+    thisShop[increment] = parseInt(delta.value);
+  Array.prototype.splice.apply(thisShop);
+  var newHours = hoursOpen(thisShop.hours);
+    thisShop.indexHours = newHours;
+  var newAvgPurch = thisShop.avgPurchase;
+  var newCust = hourlyCust (thisShop.hours, thisShop.minCust, thisShop.maxCust);
+    thisShop.custHourly = newCust;
+  var sumCust = dailyCust(newCust);
+    document.getElementById("shop"+parseInt(startValue)+"cust").innerHTML = sumCust;
+    thisShop.custDaily = sumCust;
+  var newSales = hourlyBake(newCust, newAvgPurch);
+    thisShop.bakeHourly = newSales;
+  var sumSales = dailyBake(newSales);
+    document.getElementById("shop"+parseInt(startValue)+"bake").innerHTML = sumSales;
+    thisShop.bakeDaily = sumSales;
+};
+*/
+
 /*Write Shop content to page:  */
 function fieldsets () {
 /*Write radio buttons to show/hide donutShops:  */
   for (var index = 0; index < donutShop.length; index++){
     document.write("<label class='buttonLabel'><input type='radio' name='shopSelect' id='"
-      +index+"select' class='radioButton'>"+
-      donutShop[index].shopName+"</label>");
+      +index+"' class='radioButton' onclick='displayShop(this.id)'>"
+      +donutShop[index].shopName+"</label>");
   } /*Radio button for-loop closure.  */
 /*Write fieldsets and populate donutShops data:   */
   for (var index = 0; index < donutShop.length; index++){
-    document.write("<fieldset id='"+this.donutShop[index].shopName+"'>");
+    document.write("<fieldset class='hideDonuts' id='"+this.donutShop[index].shopName+"'>");
     document.write("<legend><h4>"+this.donutShop[index].shopName+"</h4></legend>");
     document.write("<label>Minimum Customers: </label><input type='number'"+
-     "class='minCust' id='"+this.donutShop[index].shopName+" minCust'"+
+     "class='minCust' id='"+index+"minCust'"+
       "value='"+this.donutShop[index].minCust+"''>");
     document.write("<label>Maximum Customers: </label><input type='number'"+
-     "class='maxCust' id='"+this.donutShop[index].shopName+" maxCust'"+
+     "class='maxCust' id='"+index+"maxCust'"+
       "value='"+this.donutShop[index].maxCust+"'><br>");
     document.write("<label>Average Purchase: </label><input type='number'"+
-     "class='avgPurchase' id='"+this.donutShop[index].shopName+" avgPurchase'"+
+     "class='avgPurchase' id='"+index+"avgPurchase'"+
       "value='"+this.donutShop[index].avgPurchase+"'>");
     document.write("<label>Hours Open: </label><input type='number'"+
-     "class='hours' id='"+this.donutShop[index].shopName+" hours'"+
+     "class='hours' id='"+index+"hours'"+
       "value='"+this.donutShop[index].hours+"'><br>");
     document.write("<div class='custDaily'>Average Daily Customers: <span "+
-     "id='"+this.donutShop[index].shopName+" cust'>"
+     "id='"+index+"cust'>"
      +this.donutShop[index].custDaily+"</span></div>");
     document.write("<div class='donutsPerDay'>Average Donuts Baked Daily: <span "+
-     "id='"+this.donutShop[index].shopName+" bake'>"
+     "id='"+index+"bake'>"
      +this.donutShop[index].bakeDaily+
      "</span></div>");
     document.write("<table class='hourlyStats'>"
