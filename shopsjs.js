@@ -1,7 +1,7 @@
   //Insert date:
     function date () {
     var dt = new Date();
-    return dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    return dt.getMonth() + 1 + "/" + dt.getDate() + "/" + dt.getFullYear();
     };
 
     window.onload = function () {
