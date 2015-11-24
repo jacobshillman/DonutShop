@@ -57,14 +57,15 @@ aside {
       width: 90%;
       height: auto;
       float: right;
-      display: inherit; }
+      display: inherit;
+      z-index: 8; }
         #donutGlossary:hover {
           position: absolute;
           float: right;
           width: 50%;
           height: auto;
           right: 0;
-          z-index: 5;
+          z-index: 10;
         }
 
   /*Navigation bar formatting:  */
@@ -99,12 +100,18 @@ aside {
   float: both;
 }
 
+.buttonLabel {
+  margin: 1em 1em;
+  display: block;
+}
+
   /*Dynamically generated fieldsets:  */
 fieldset {
   margin: 2em 1em;
   min-width: 800px;
   background-color: #cc99ff;
   position: static;
+  z-index: 0;
 }
 
 h4 {
