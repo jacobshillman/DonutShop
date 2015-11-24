@@ -14,3 +14,18 @@
   for (var index = 0; index < donutShop.length; index++){
         //fieldsets must be siblings to the checkbox (per my latest) to show/hide them.
 
+Book: Heads Up JavaScript
+
+
+
+------Track customers in the shop-----
+var purchaseData - new Array ();
+
+purchaseData.push({label...});
+  ...etc...
+
+var chart = new CanvasJS.Chart("elementName", {
+
+  title: {text: ...}
+
+
