@@ -56,6 +56,7 @@ function dailyBake (bake) {
   return bakedDaily;
 };
 
+
 //Shop constructor:
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
@@ -78,6 +79,29 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
     //Donuts to bake per day:
   this.bakeDaily = dailyBake(this.bakeHourly);
 };
+
+  //Functions to generate hourly Shop info for table:
+function hoursDisplay (shopID) {
+  var hrDisp = "<tr id='highlight'><th>Each Hour Open:</th>";
+    for (hrIndex = 0; hrIndex < shopID.indexHours.length; hrIndex++) {
+      hrDisp +="<td>"+shopID.indexHours[hrIndex]+"</td>";
+    }
+  hrDisp += "</tr>"
+  return hrDisp;  }
+function custDisplay (shopID) {
+  var cDisp = "<tr><th>Customers per Hour:</th>";
+    for (custIndex = 0; custIndex < shopID.custHourly.length; custIndex++) {
+      cDisp +="<td>"+shopID.custHourly[custIndex]+"</td>";
+    }
+  cDisp += "</tr>"
+  return cDisp; }
+function salesDisplay (shopID) {
+  var sDist = "<tr><th>Sales per Hour:</th>";
+    for (saleIndex = 0; saleIndex < shopID.bakeHourly.length; saleIndex++) {
+      sDist +="<td>"+shopID.bakeHourly[saleIndex]+"</td>";
+    }
+  sDist += "</tr>"
+  return sDist; }
 
 //Init Shop instances:
 var donutShop = [5];
@@ -127,29 +151,6 @@ function fieldsets (donutshop) {
       +custDisplay(this.donutShop[index])
       +salesDisplay(this.donutShop[index])
       +"</table>");
-
-          //Functions to generate hourly Shop info for table:
-        function hoursDisplay () {
-          var hrDisp = "<tr id='highlight'><th>Each Hour Open:</th>";
-            for (hrIndex = 0; hrIndex < this.donutShop[index].indexHours.length; hrIndex++) {
-              hrDisp +="<td>"+this.donutShop[index].indexHours[hrIndex]+"</td>";
-            }
-          hrDisp += "</tr>"
-          return hrDisp;  }
-        function custDisplay () {
-          var cDisp = "<tr><th>Customers per Hour:</th>";
-            for (custIndex = 0; custIndex < this.donutShop[index].custHourly.length; custIndex++) {
-              cDisp +="<td>"+this.donutShop[index].custHourly[custIndex]+"</td>";
-            }
-          cDisp += "</tr>"
-          return cDisp; }
-        function salesDisplay () {
-          var sDist = "<tr><th>Sales per Hour:</th>";
-            for (saleIndex = 0; saleIndex < this.donutShop[index].bakeHourly.length; saleIndex++) {
-              sDist +="<td>"+this.donutShop[index].bakeHourly[saleIndex]+"</td>";
-            }
-          sDist += "</tr>"
-          return sDist; }
 
     document.write("</fieldset>");
 
