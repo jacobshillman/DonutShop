@@ -79,11 +79,11 @@ function salesDisplay (shopID) {
   sDist += "</tr>"
   return sDist; }
 
+/*Variables & function to show/hide fieldsets:  */
 var startValue = 0;
 var shown = "shop0";
-
 function displayShop (id) {
-  document.getElementById(shown).setAttribute("class", "hideDonuts");
+  console.log(document.getElementById(shown));//.setAttribute("class", "hideDonuts");
   shown = "shop"+id;
   startValue = id;
   document.getElementById("shop"+id).setAttribute("class", "showDonuts");
@@ -96,18 +96,14 @@ function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.maxCust = maxCust;
   this.avgPurchase = avgPurchase;
   this.hours = hours;
-
 /*Generate array with each hour Shop is open:  */
   this.indexHours = hoursOpen(this.hours);
-
 /*Random sample of average customers per hour:  */
   this.custHourly = hourlyCust(this.hours, this.minCust, this.maxCust);
-
+/*Customers served daily:   */
   this.custDaily = dailyCust(this.custHourly);
-
 /*Donuts to bake per hour:  */
   this.bakeHourly = hourlyBake(this.custHourly, this.avgPurchase);
-
 /*Donuts to bake per day:  */
   this.bakeDaily = dailyBake(this.bakeHourly);
 };
@@ -148,8 +144,8 @@ function newValues (delta) {
 function fieldsets () {
 /*Write radio buttons to show/hide donutShops:  */
   for (var index = 0; index < donutShop.length; index++){
-    document.write("<label class='buttonLabel'><input type='radio' name='shopSelect' id='"
-      +index+"' class='radioButton' onclick='displayShop(this.id)'>"
+    document.write("<label class='buttonLabel' htmlFor='"+index+"'><input type='radio' name='shopSelect' id='"
+      +index+"' class='radioButton' onclick='displayShop("+this.id+")'>"
       +donutShop[index].shopName+"</label>");
   } /*Radio button for-loop closure.  */
 /*Write fieldsets and populate donutShops data:   */

@@ -109,6 +109,14 @@ aside {
   display: block;
 }
 
+.showDonuts {
+  margin: 2em 1em;
+  min-width: 465px;
+  background-color: #cc99ff;
+  position: static;
+  display: block;
+}
+
   /*Dynamically generated fieldsets:  */
 fieldset {
   margin: 2em 1em;
