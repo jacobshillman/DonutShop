@@ -101,20 +101,24 @@ var thisShop = new Shop();
 function newValues (delta) {
   var thisShop = donutShop[startValue];
   var increment = delta.getAttribute("name");
-  thisShop[increment] = parseInt(delta.value);
+    thisShop[increment] = parseInt(delta.value);
   Array.prototype.splice.apply(thisShop);
   var newHours = hoursOpen(thisShop.hours);
+    thisShop.indexHours = newHours;
   var newAvgPurch = thisShop.avgPurchase;
   var newCust = hourlyCust (thisShop.hours, thisShop.minCust, thisShop.maxCust);
+    thisShop.custHourly = newCust;
   var sumCust = dailyCust(newCust);
     document.getElementById("shop"+parseInt(startValue)+"cust").innerHTML = sumCust;
+    thisShop.custDaily = sumCust;
   var newSales = hourlyBake(newCust, newAvgPurch);
+    thisShop.bakeHourly = newSales;
   var sumSales = dailyBake(newSales);
     document.getElementById("shop"+parseInt(startValue)+"bake").innerHTML = sumSales;
-    console.log(thisShop);
-    console.log(thisShop.indexHours);    
-  thisShop.indexHours = newHours;
-  console.log(thisShop.indexHours);
+    thisShop.bakeDaily = sumSales;
+      console.log(thisShop);
+      console.log(thisShop.indexHours);    
+      console.log(thisShop.indexHours);
   hiddenTable(thisShop);
 };
 
@@ -297,6 +301,9 @@ salesDailyWrite();
 
 function hiddenTable (theShop) {
   for (var index = 0; index < donutShop.length; index++){
+    if (document.getElementById("hourlyStats" != "")) {
+      document.getElementById("shop"+index).removeChild("hourlyStats");
+    } else {
 /*Create hourly statistics table:   */
     var statsHourly = document.createElement("table");
       statsHourly.className = "hourlyStats";
@@ -308,9 +315,9 @@ function hiddenTable (theShop) {
       row1.appendChild(row1Head);
       row1Head.appendChild(document.createTextNode("Each Hour Open:"));
 /*Create hourly statistics table first row data cells:   */
-      for (cellIndex = 0; cellIndex < theShop[index].indexHours.length; cellIndex++) {
+      for (cellIndex = 0; cellIndex < theShop.indexHours.length; cellIndex++) {
         var row1Data = row1.insertCell(-1);
-        row1Data.innerHTML = theShop[index].indexHours[cellIndex];};
+        row1Data.innerHTML = theShop.indexHours[cellIndex];};
 /*Create hourly statistics table second row:   */
     var row2 = statsHourly.insertRow(1);
 /*Create hourly statistics table second row header cell:   */
@@ -319,9 +326,9 @@ function hiddenTable (theShop) {
       row2Head.appendChild(document.createTextNode("Customers per Hour:"));
 /*Create hourly statistics table second row data cells:   */
     var row2Data;
-      for (cellIndex = 0; cellIndex < theShop[index].custHourly.length; cellIndex++) {
+      for (cellIndex = 0; cellIndex < theShop.custHourly.length; cellIndex++) {
         var row2Data = row2.insertCell(-1);
-        row2Data.innerHTML = theShop[index].custHourly[cellIndex];};
+        row2Data.innerHTML = theShop.custHourly[cellIndex];};
 /*Create hourly statistics table third row:   */
     var row3 = statsHourly.insertRow(2);
 /*Create hourly statistics table third row header cell:   */
@@ -330,10 +337,11 @@ function hiddenTable (theShop) {
       row3Head.appendChild(document.createTextNode("Sales per Hour:"));
 /*Create hourly statistics table second row data cells:   */
     var row3Data;
-      for (cellIndex = 0; cellIndex < theShop[index].bakeHourly.length; cellIndex++) {
+      for (cellIndex = 0; cellIndex < theShop.bakeHourly.length; cellIndex++) {
         var row3Data = row3.insertCell(-1);
-        row3Data.innerHTML = theShop[index].bakeHourly[cellIndex];};
+        row3Data.innerHTML = theShop.bakeHourly[cellIndex];};
     document.getElementById("shop"+index).appendChild(statsHourly);
+    } /*If/else closure.  */
   } /*for loop closure.   */
 }; /*hiddenTable function closure.  */
 
