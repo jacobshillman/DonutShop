@@ -122,7 +122,7 @@ aside {
 }
     /*Show/hide .donuts fieldsets:  */
   .hideDonuts {
-    display: block;
+    display: none;
   }
 
 h4 {
