@@ -167,7 +167,7 @@ h4 {
   background-color: white;
   display: inline-block;
   position: absolute;
-  bottom: 3.5em;
+  bottom: -3.5em;
   right: 0;
 
 }
