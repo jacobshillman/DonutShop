@@ -43,11 +43,11 @@ function dailyBake (bake) {
   return bakedDaily;
 };
 
+/*Variables & function to show/hide fieldsets:  */
 var startValue = 0;
 var shown = "shop0";
-
 function displayShop (id) {
-  document.getElementById(shown).setAttribute("class", "hideDonuts");
+  console.log(document.getElementById(shown));//.setAttribute("class", "hideDonuts");
   shown = "shop"+id;
   startValue = id;
   document.getElementById("shop"+id).setAttribute("class", "showDonuts");
@@ -64,31 +64,26 @@ function displayShop (id) {
 
   /*Shop constructor:   */
 function Shop (name, minCust, maxCust, avgPurchase, hours) {
+/*Shop constructor:  */
+function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgPurchase = avgPurchase;
   this.hours = hours;
-
-/*Generate array with each hour Shop is open:   */
+/*Generate array with each hour Shop is open:  */
   this.indexHours = hoursOpen(this.hours);
-
-/*Random sample of average customers per hour:   */
+/*Random sample of average customers per hour:  */
   this.custHourly = hourlyCust(this.hours, this.minCust, this.maxCust);
-
-/*Customers per day:   */
+/*Customers served daily:   */
   this.custDaily = dailyCust(this.custHourly);
-
-/*Donuts to bake per hour:   */
+/*Donuts to bake per hour:  */
   this.bakeHourly = hourlyBake(this.custHourly, this.avgPurchase);
-
-/*Donuts to bake per day:   */
+/*Donuts to bake per day:  */
   this.bakeDaily = dailyBake(this.bakeHourly);
-
-/*Generat number inputs for display:  */
 };
 
-  /*Init Shop instances:   */
+/*Init Shop instances:  */
 var donutShop = [5];
 donutShop[0] = new Shop("Blue Star Donuts", 8, 43, 4.5, 11);
 donutShop[1] = new Shop("Voodoo Doughnut", 4, 37, 2, 24);

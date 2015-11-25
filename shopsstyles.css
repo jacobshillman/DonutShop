@@ -58,14 +58,15 @@ aside {
       width: 90%;
       height: auto;
       float: right;
-      display: inherit; }
+      display: inherit;
+      z-index: 8; }
         #donutGlossary:hover {
           position: absolute;
           float: right;
           width: 50%;
           height: auto;
           right: 0;
-          z-index: 5;
+          z-index: 10;
         }
 
   /*Navigation bar formatting:  */
@@ -113,6 +114,15 @@ aside {
 }
 
   /*Dynamically generated Shops Data:  */
+.buttonLabel {
+  margin: 1em 1em;
+  display: block;
+}
+
+.hideDonuts {
+  display: block;
+}
+
 .showDonuts {
   margin: 2em 1em;
   min-width: 465px;
@@ -120,10 +130,6 @@ aside {
   position: static;
   display: block;
 }
-    /*Show/hide .donuts fieldsets:  */
-  .hideDonuts {
-    display: none;
-  }
 
 h4 {
   text-decoration: underline;
@@ -169,7 +175,6 @@ h4 {
   position: absolute;
   bottom: -3.5em;
   right: 0;
-
 }
 
 .hourlyStats, tbody, th, td {
@@ -179,6 +184,8 @@ h4 {
 
 .hourlyStats th {
   width: 83px;
+  width: 85px;
+  height: auto;
 }
 
 .hourlyStats td {
@@ -190,6 +197,7 @@ h4 {
   float: right;
   margin: 1em;
 }
+
   /*Footer formatting:  */
 footer {
   background-color: red;
