@@ -113,15 +113,15 @@ function newValues (delta) {
 };
 
 function clearTable () {
-    console.log(document.getElementById("hourlyStats"));
-  if (document.getElementById("hourlyStats") == "") {
+    console.log(document.getElementById("statsTable"));
+  if (document.getElementById("statsTable") == " ") {
     return null;
   } else {
-    console.log(document.getElementById("hourlyStats"));
-    var removeTable = document.getElementById("hourlyStats");
+    console.log(document.getElementById("statsTable"));
+    var removeTable = document.getElementById("statsTable");
     removeTable.parentNode.removeChild(removeTable);
-  }
-}; /*unction clearTable closure.  */
+  } /*else closure.   */
+}; /*function clearTable closure.  */
 
 /*Write radio buttons to select which shop to view:   */
 function radioSelect () {
@@ -279,6 +279,7 @@ function hiddenTable (theShop) {
 /*Create hourly statistics table:   */
     var statsHourly = document.createElement("table");
       statsHourly.className = "hourlyStats";
+      statsHourly.id = "statsTable";
 /*Create hourly statistics table first row:   */
     var row1 = statsHourly.insertRow(0);
       row1.id = "highlight";

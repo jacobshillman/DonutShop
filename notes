@@ -29,3 +29,11 @@ var chart = new CanvasJS.Chart("elementName", {
   title: {text: ...}
 
 
+function clearTable () {
+  if (document.getElementById("hourlyStats") != "") {
+    var removeTable = document.getElementById("hourlyStats");
+    removeTable.parentNode.removeChild(removeTable);
+  } else {
+    return null;
+  }
+}; /*function clearTable closure.  */
