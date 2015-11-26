@@ -47,7 +47,7 @@ function dailyBake (bake) {
 var startValue = 0;
 var shown = "shop0";
 function displayShop (id) {
-  console.log(document.getElementById(shown));//.setAttribute("class", "hideDonuts");
+  document.getElementById(shown).setAttribute("class", "hideDonuts");
   shown = "shop"+id;
   startValue = id;
   document.getElementById("shop"+id).setAttribute("class", "showDonuts");
@@ -62,8 +62,6 @@ function displayShop (id) {
   var content = document.createTextNode(date());
   dateDiv.appendChild(content);
 
-  /*Shop constructor:   */
-function Shop (name, minCust, maxCust, avgPurchase, hours) {
 /*Shop constructor:  */
 function Shop (name,minCust,maxCust,avgPurchase,hours) {
   this.shopName = name;
@@ -114,6 +112,17 @@ function newValues (delta) {
   hiddenTable(thisShop);
 };
 
+function clearTable () {
+    console.log(document.getElementById("hourlyStats"));
+  if (document.getElementById("hourlyStats") == "") {
+    return null;
+  } else {
+    console.log(document.getElementById("hourlyStats"));
+    var removeTable = document.getElementById("hourlyStats");
+    removeTable.parentNode.removeChild(removeTable);
+  }
+}; /*unction clearTable closure.  */
+
 /*Write radio buttons to select which shop to view:   */
 function radioSelect () {
   for (var index = 0; index < donutShop.length; index++){
@@ -131,7 +140,7 @@ function radioSelect () {
       radio.id = index;
       radio.addEventListener("click", function() {
         displayShop(this.id);
-      });
+        clearTable(); });
     label.appendChild(radio);
       label.appendChild(document.createTextNode(this.donutShop[index].shopName));
   } /*for loop closure.   */
@@ -168,7 +177,7 @@ function fieldsets () {
       minCustText.value = this.donutShop[index].minCust;
       minCustText.addEventListener("change", function () {
         newValues(this);
-      });
+        clearTable(); });
     document.getElementById("shop"+index).appendChild(minCustText);
 
 /*Create maximum customers per hour label:   */
@@ -184,7 +193,7 @@ function fieldsets () {
       maxCustText.value = this.donutShop[index].maxCust;
       maxCustText.addEventListener("change", function () {
         newValues(this);
-      });
+        clearTable(); });
     document.getElementById("shop"+index).appendChild(maxCustText);
 
 /*Line break for formatting:   */
@@ -204,7 +213,7 @@ function fieldsets () {
       avgPurchText.value = this.donutShop[index].avgPurchase;
       avgPurchText.addEventListener("change", function () {
         newValues(this);
-      });
+        clearTable(); });
     document.getElementById("shop"+index).appendChild(avgPurchText);
 
 /*Create hours open per day label:   */
@@ -220,7 +229,7 @@ function fieldsets () {
       hoursText.value = this.donutShop[index].hours;
       hoursText.addEventListener("change", function () {
         newValues(this);
-      });
+        clearTable(); });
     document.getElementById("shop"+index).appendChild(hoursText);
 
 /*Create average customers daily label:   */
@@ -256,8 +265,8 @@ function fieldsets () {
       tableButton.className = "tableButton";
       tableButton.id = "show"+"shop"+index;
       tableButton.addEventListener("click", function () {
-        hiddenTable(donutShop);
-      });
+        hiddenTable(donutShop[startValue]);
+        clearTable(); });
       tableButton.appendChild(document.createTextNode("Hourly Statistics"));
     tableHover.appendChild(tableButton);
   } /*for loop closure.   */
@@ -280,7 +289,7 @@ function hiddenTable (theShop) {
 /*Create hourly statistics table first row data cells:   */
       for (cellIndex = 0; cellIndex < theShop.indexHours.length; cellIndex++) {
         var row1Data = row1.insertCell(-1);
-        row1Data.innerHTML = theShop.indexHours[cellIndex];};
+        row1Data.innerHTML = theShop.indexHours[cellIndex]; };
 /*Create hourly statistics table second row:   */
     var row2 = statsHourly.insertRow(1);
 /*Create hourly statistics table second row header cell:   */
@@ -291,7 +300,7 @@ function hiddenTable (theShop) {
     var row2Data;
       for (cellIndex = 0; cellIndex < theShop.custHourly.length; cellIndex++) {
         var row2Data = row2.insertCell(-1);
-        row2Data.innerHTML = theShop.custHourly[cellIndex];};
+        row2Data.innerHTML = theShop.custHourly[cellIndex]; };
 /*Create hourly statistics table third row:   */
     var row3 = statsHourly.insertRow(2);
 /*Create hourly statistics table third row header cell:   */
@@ -302,7 +311,7 @@ function hiddenTable (theShop) {
     var row3Data;
       for (cellIndex = 0; cellIndex < theShop.bakeHourly.length; cellIndex++) {
         var row3Data = row3.insertCell(-1);
-        row3Data.innerHTML = theShop.bakeHourly[cellIndex];};
+        row3Data.innerHTML = theShop.bakeHourly[cellIndex]; };
     document.getElementById("shop"+index).appendChild(statsHourly);
   } /*for loop closure.   */
 }; /*hiddenTable function closure.  */
